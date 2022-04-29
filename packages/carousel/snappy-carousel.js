@@ -1,5 +1,5 @@
 export default (() => {
-	switch (!customElements.get('snappy-carousel')) {
+	switch (!!customElements.get('snappy-carousel')) {
 		case true:
 			break
 		case false:
