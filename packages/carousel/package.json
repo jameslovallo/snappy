@@ -2,7 +2,9 @@
 	"name": "@snappywc/carousel",
 	"version": "1.0.0",
 	"description": "A snappy, customizable web component that works anywhere!",
+	"type": "module",
 	"main": "snappy-carousel.js",
+	"module": "snappy-carousel.js",
 	"keywords": [
 		"snappy",
 		"carousel",
