@@ -1,0 +1,39 @@
+{
+	"name": "@snappy/carousel",
+	"version": "1.0.1",
+	"description": "A snappy and customizable carousel that works anywhere!",
+	"type": "module",
+	"main": "snap-carousel.js",
+	"module": "snap-carousel.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
+	"keywords": [
+		"snappy",
+		"carousel",
+		"slider",
+		"swiper",
+		"scroll snap",
+		"web component",
+		"web components",
+		"react",
+		"vue",
+		"svelte",
+		"vanilla",
+		"small",
+		"fast",
+		"flexible",
+		"customizable",
+		"themeable",
+		"slot",
+		"slots",
+		"::part"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy#readme"
+}
