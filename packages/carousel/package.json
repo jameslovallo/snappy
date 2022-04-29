@@ -3,8 +3,8 @@
 	"version": "1.0.1",
 	"description": "A snappy and customizable carousel that works anywhere!",
 	"type": "module",
-	"main": "snap-carousel.js",
-	"module": "snap-carousel.js",
+	"main": "snappy-carousel.js",
+	"module": "snappy-carousel.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/kaina-agency/snappy.git"
