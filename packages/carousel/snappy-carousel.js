@@ -1,10 +1,10 @@
 export default (() => {
-	const loaded = typeof customElements.get('snap-carousel') === 'function'
+	const loaded = typeof customElements.get('snappy-carousel') === 'function'
 	switch (loaded) {
 		case true:
 			break
 		case false:
-			class snapCarousel extends HTMLElement {
+			class snappyCarousel extends HTMLElement {
 				constructor() {
 					super()
 					this.attachShadow({ mode: 'open' })
@@ -224,6 +224,6 @@ export default (() => {
 					})
 				}
 			}
-			customElements.define('snap-carousel', snapCarousel)
+			customElements.define('snappy-carousel', snappyCarousel)
 	}
 })()
