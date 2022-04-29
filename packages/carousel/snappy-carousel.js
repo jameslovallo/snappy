@@ -1,6 +1,5 @@
 export default (() => {
-	const loaded = typeof customElements.get('snappy-carousel') === 'function'
-	switch (loaded) {
+	switch (!customElements.get('snappy-carousel')) {
 		case true:
 			break
 		case false:
