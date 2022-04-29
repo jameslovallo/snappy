@@ -1,9 +1,14 @@
 {
 	"name": "@snappy/carousel",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A snappy and customizable carousel that works everywhere!",
+	"type": "module",
 	"main": "snappy-carousel.js",
 	"module": "snappy-carousel.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
 	"keywords": [
 		"snappy",
 		"carousel",
@@ -25,9 +30,10 @@
 		"slots",
 		"::part"
 	],
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"author": "James Lovallo",
-	"license": "ISC"
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy#readme"
 }
