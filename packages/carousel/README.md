@@ -3,19 +3,23 @@
 The tiny, no-nonsense carousel that works anywhere.
 1.6kb compressed. 0 dependencies.
 
-[Live Demo with Vanilla, React and Vue examples](https://codepen.io/kaicna/pen/PoErQyv)
+[Demo with Vanilla, React and Vue examples](https://codepen.io/kaicna/pen/PoErQyv)
 
 ![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-carousel.png?raw=true)
 
 ## Installation
 Option 1: As a package.
-```
+
+```sh
 npm i @snappywc/carousel -P
 ```
+
 ```js
 import "@snappywc/carousel";
 ```
+
 Option 2: In your markup.
+
 ```html
 <script type="module" src="https://unpkg.com/@snappywc/carousel@latest/snappy-carousel.min.js"></script>
 ```
@@ -43,7 +47,7 @@ go to the previous slide
 
 go to the next slide
 
-```.goToSlide(#)```
+```.goToSlide()```
 
 go to a specific slide at index #
 
@@ -78,12 +82,14 @@ snappy-carousel {
 
 ### Slots
 Named slots allow you to customize the icons used for the previous button, next button, indicators and active indicators. These can be SVG icons, icons from a font, images, or even a custom component. Total freedom!
+
+Pro tip: you can use inline styles on a slotted element to override the color and size variables. There is an example of this in the demo.
 - prev-icon
 - next-icon
 - indicator-icon
 - indicator-icon-active
 
-Example
+An example using named slots to customize the previous and next icons using inline SVGs.
 ```html
 <snappy-carousel>
 
@@ -112,7 +118,7 @@ Web components have a bad reupation for being hard to style, but CSS ::part() se
 - prev
 - next
 
-Example
+An example using ::part() selectors to style the indicators and previous/next buttons.
 ```scss
 snappy-carousel {
 
