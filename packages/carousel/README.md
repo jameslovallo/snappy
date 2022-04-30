@@ -29,9 +29,9 @@ Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to g
 
 ```html
 <snappy-carousel>
-	<img src="//picsum.photos/seed/1/600/375" />
-	<img src="//picsum.photos/seed/2/600/375" />
-	<img src="//picsum.photos/seed/3/600/375" />
+  <img src="//picsum.photos/seed/1/600/375" />
+  <img src="//picsum.photos/seed/2/600/375" />
+  <img src="//picsum.photos/seed/3/600/375" />
 </snappy-carousel>
 ```
 That's it! Pat yourself on the back and grab a drink!
@@ -57,17 +57,17 @@ Change the basic layout and behavior of the carousel.
 ```scss
 snappy-carousel {
 
-	// slide width per breakpoint
-	--mobile: 100%;
-	--tablet: 50%; // >= 768
-	--desktop: 33.33%; // >= 1024
+  // slide width per breakpoint
+  --mobile: 100%;
+  --tablet: 50%; // >= 768
+  --desktop: 33.33%; // >= 1024
 
-	// styling
-	--gap: 0;
-	--icon-color: currentcolor;
-	--arrow-alignment: flex-end; //vertical, flex values
-	--arrow-size: 48px;
-	--indicator-size: 16px;
+  // styling
+  --gap: 0;
+  --icon-color: currentcolor;
+  --arrow-alignment: flex-end; //vertical, flex values
+  --arrow-size: 48px;
+  --indicator-size: 16px;
 }
 ```
 
@@ -84,19 +84,19 @@ An example using named slots to customize the previous and next icons using inli
 ```html
 <snappy-carousel>
 
-	<!-- Default slot for slides -->
-	<img src="whatever" />
-	<img src="whatever" />
-	<img src="whatever" />
-	
-	<!-- Named slots for controls -->
-	<svg slot="prev-icon">
-		<path d="whatever" />
-	</svg>
+  <!-- Default slot for slides -->
+  <img src="whatever" />
+  <img src="whatever" />
+  <img src="whatever" />
+  
+  <!-- Named slots for controls -->
+  <svg slot="prev-icon">
+    <path d="whatever" />
+  </svg>
 
-	<svg slot="next-icon">
-		<path d="whatever" />
-	</svg>
+  <svg slot="next-icon">
+    <path d="whatever" />
+  </svg>
 
 </snappy-carousel>
 ```
@@ -113,16 +113,16 @@ An example using ::part() selectors to style the indicators and previous/next bu
 ```scss
 snappy-carousel {
 
-	&::part(indicators) {
-		position: absolute;
-		bottom: 0;
-		filter: drop-shadow(0 1px 2px black);
-	}
+  &::part(indicators) {
+    position: absolute;
+    bottom: 0;
+    filter: drop-shadow(0 1px 2px black);
+  }
 
-	&::part(prev),
-	&::part(next) {
-		filter: drop-shadow(0 1px 2px black);
-	}
+  &::part(prev),
+  &::part(next) {
+    filter: drop-shadow(0 1px 2px black);
+  }
 
 }
 ```
