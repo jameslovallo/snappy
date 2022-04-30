@@ -3,7 +3,7 @@
 The tiny, no-nonsense carousel that works anywhere.
 1.6kb compressed. 0 dependencies.
 
-[Live Demo with Vanilla, React and Vue examples](https://odepen.io/kaicna/pen/PoErQyv)
+[Live Demo with Vanilla, React and Vue examples](https://codepen.io/kaicna/pen/PoErQyv)
 
 ![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-carousel.png?raw=true)
 
@@ -49,7 +49,7 @@ document.querySelector('snappy-carousel#demo').goToSlide(3)
 ## Customization
 @snappywc components provide CSS variables, named slots and ::part() CSS selectors for custom styling. This provides greater flexibility than offering dozens of parameters that may or may not accomplish what you need.
 
-For a better idea of how this works, [check out the demos](https://odepen.io/kaicna/pen/PoErQyv)!
+For a better idea of how this works, [check out the demos](https://codepen.io/kaicna/pen/PoErQyv)!
 
 ### CSS Variables and Defaults
 Change the basic layout and behavior of the carousel.
