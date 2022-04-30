@@ -35,11 +35,17 @@ That's it! Pat yourself on the back and grab a drink!
 ### Methods
 Keep It Simple, Stupid is the @snappywc way. There are no methods to refresh the carousel, any content changes to the main slot will automatically trigger a refresh.
 
-```.prev()``` (go to the previous slide)
+```.prev()```
 
-```.next()``` (go to the next slide)
+go to the previous slide
 
-```.goToSlide(#)``` (go to a specific slide at index #)
+```.next()```
+
+go to the next slide
+
+```.goToSlide(#)```
+
+go to a specific slide at index #
 
 Example
 ```js
