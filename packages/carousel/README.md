@@ -102,7 +102,7 @@ An example using named slots to customize the previous and next icons using inli
 ```
 
 ### Parts
-Web components have a bad reupation for being hard to style, but CSS ::part() selectors make it trivial to target anything inside the component's Shadow DOM and do anything you want to it.
+Web components have a bad reupation for being hard to style, but CSS ::part() selectors make it trivial to target an element inside the component's Shadow DOM and do anything you want to it.
 - carousel
 - track
 - indicators
