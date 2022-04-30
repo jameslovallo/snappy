@@ -37,7 +37,7 @@ Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to g
 That's it! Pat yourself on the back and grab a drink!
 
 ### Methods
-Keep It Simple, Stupid is the @snappywc way. There are no methods to refresh the carousel, any content changes to the main slot will automatically trigger a refresh.
+Stupid is the @snappywc way. There are no methods to refresh the carousel, any content changes to the main slot will automatically trigger a refresh.
 
 ```.prev()```
 
