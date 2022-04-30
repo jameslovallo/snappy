@@ -5,6 +5,8 @@ The tiny, no-nonsense carousel that works anywhere.
 
 [Live Demo with Vanilla, React and Vue examples](https://codepen.io/kaina/pen/PoErQyv)
 
+![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-carousel.png?raw=true)
+
 ## Installation
 Option 1: As a package.
 ```
@@ -24,7 +26,23 @@ Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to g
 ## Customization
 @snappy components provide named slots to modify internal markup and ::part() CSS selectors for custom styling. This provides greater flexibility than offering dozens of parameters that may or may not accomplish what you need.
 
-For a better idea of how this works, check out the demos!
+For a better idea of how this works together, check out the demos!
+
+### Variables and Defaults
+```scss
+snap-carousel {
+	// responsiveness
+	--mobile: 100%;
+	--tablet: 50%;
+	--desktop: 33.33%;
+	// styling
+	--gap: 0;
+	--icon-color: currentcolor;
+	--arrow-alignment: flex-end;
+	--arrow-size: 48px;
+	--indicator-size: 16px;
+}
+```
 
 ### Slots
 - prev-icon
@@ -33,8 +51,6 @@ For a better idea of how this works, check out the demos!
 - indicator-icon-active
 
 ```html
-Using Slots
-
 <snappy-carousel id="custom">
 
 	<!-- Default Slot -->
@@ -60,8 +76,6 @@ Using Slots
 - prev
 - next
 ```scss
-Using Parts
-
 snappy-carousel#demo {
 	&::part(indicators) {
 		position: absolute;
@@ -74,18 +88,4 @@ snappy-carousel#demo {
 		filter: drop-shadow(0 1px 2px black);
 	}
 }
-```
-
-### Variables and Defaults
-```scss
-// responsiveness
---mobile: 100%;
---tablet: 50%;
---desktop: 33.33%;
-// styling
---gap: 0;
---icon-color: currentcolor;
---arrow-alignment: flex-end;
---arrow-size: 48px;
---indicator-size: 16px;
 ```
