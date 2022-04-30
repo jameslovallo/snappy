@@ -25,7 +25,7 @@ Option 2: In your markup.
 ```
 
 ## Usage
-Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to go. This is a native web component and works in React, Vue, Svelte, Angular, and any other web platform because all @snappywc packages have 0 dependencies and are built using low-level APIs.
+Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to go. This is a native web component and works in React, Vue, Svelte, Angular, and any other web framework because all @snappywc packages have 0 dependencies and are built using low-level APIs.
 
 ```html
 <snappy-carousel>
