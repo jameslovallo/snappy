@@ -37,24 +37,15 @@ Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to g
 That's it! Pat yourself on the back and grab a drink!
 
 ### Methods
-Stupid is the @snappywc way. There are no methods to refresh the carousel, any content changes to the main slot will automatically trigger a refresh.
+Simple is the @snappywc way.
 
-```.prev()```
+Method|Description
+-|-
+.prev()|go to the previous slide
+.next()|go to the next slide
+.goToSlide(#)|go to slide at index #
 
-go to the previous slide
-
-```.next()```
-
-go to the next slide
-
-```.goToSlide()```
-
-go to a specific slide at index #
-
-Example
-```js
-document.querySelector('snappy-carousel#demo').goToSlide(3)
-```
+There are no methods to manually refresh the carousel. Any content changes to the main slot will automatically trigger a refresh.
 
 ## Customization
 @snappywc components provide CSS variables, named slots and ::part() CSS selectors for custom styling. This provides greater flexibility than offering dozens of parameters that may or may not accomplish what you need.
