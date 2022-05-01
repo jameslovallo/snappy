@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/carousel",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"description": "A snappy, customizable web component that works anywhere!",
 	"type": "module",
 	"main": "snappy-carousel.min.js",
@@ -10,6 +10,7 @@
 		"carousel",
 		"slider",
 		"swiper",
+		"slick",
 		"scroll snap",
 		"web component",
 		"web components",
@@ -21,7 +22,8 @@
 		"fast",
 		"flexible",
 		"customizable",
-		"themeable",
+		"accessible",
+		"accessibility",
 		"slot",
 		"slots",
 		"::part"

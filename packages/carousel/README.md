@@ -113,7 +113,7 @@ An example using named slots to customize the previous and next icons using inli
 
 ### Parts
 
-Web components have a bad reupation for being hard to style, but CSS ::part() selectors make it trivial to target an element inside the component's Shadow DOM and do anything you want to it.
+Web components have a reputation for being hard to style, but CSS `::part()` selectors make it trivial to target an element inside the component's Shadow DOM and apply any styling you want to it.
 
 - carousel
 - track
@@ -121,7 +121,7 @@ Web components have a bad reupation for being hard to style, but CSS ::part() se
 - prev
 - next
 
-An example using ::part() selectors to style the indicators and previous/next buttons.
+A simple example using ::part() selectors to style the indicators and previous/next buttons.
 
 ```scss
 snappy-carousel {
@@ -142,10 +142,10 @@ snappy-carousel {
 
 This should be everyone's first priority when implementing a carousel. I had a blind roommate in college and carousels were the bane of his existence. If you're going to use a carousel, it needs to be done right. @snappywc web components cover all of the basics, including appropriate aria labels, aria roles, and announcing changes to screen readers.
 
-You may have noticed that `<snappy-carousel>` doesn't provide any default support for autoplay. That's because autoplay is terrible for everybody, but especially for users who depend on keyboard navigation or screen readers. That said, if you really need this feature, you can implement that on your own using the .next() method. Please be kind to your users and pause autoplay on hover, as in the example below.
+You may have noticed that `<snappy-carousel>` doesn't provide any default support for auto-play. That's because auto-play is terrible for everybody, but especially for users who depend on keyboard navigation or screen readers. That said, if you really need auto-play, you can easily implement it using the .next() method. Please be kind to your users and pause auto-play on hover, as in the example below.
 
 ```js
-// autoplay is evil, but here's how you can do it
+// auto-play is evil, but here's how you can do it
 const carousel = document.querySelector('snappy-carousel#custom')
 
 carousel.onmouseover = () => {
@@ -163,4 +163,4 @@ setInterval(() => {
 
 ## So there you have it.
 
-An easy-to-use, fully-featured carousel that you can quickly drop into whatever you're working on and style any way you want. No complicated configuration or init functions and out-of-the-box simplicity, all for less than 2kb.
+An easy-to-use, fast and accessible carousel that you can quickly use anywhere and style any way you like it, all for less than 2kb.
