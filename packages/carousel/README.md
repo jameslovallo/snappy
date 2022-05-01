@@ -1,7 +1,7 @@
 # &lt;snappy-carousel&gt;
 
 The tiny, no-nonsense carousel that works anywhere.
-1.6kb compressed. 0 dependencies.
+1.9kb (Brotli). 0 Dependencies.
 
 [Demo with Vanilla, React and Vue examples](https://codepen.io/kaicna/pen/PoErQyv)
 
