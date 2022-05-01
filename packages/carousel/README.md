@@ -8,6 +8,7 @@ The tiny, no-nonsense carousel that works anywhere.
 ![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-carousel.png?raw=true)
 
 ## Installation
+
 Option 1: As a package.
 
 ```sh
@@ -15,94 +16,105 @@ npm i @snappywc/carousel -P
 ```
 
 ```js
-import "@snappywc/carousel";
+import '@snappywc/carousel'
 ```
 
 Option 2: In your markup.
 
 ```html
-<script type="module" src="https://unpkg.com/@snappywc/carousel@latest/snappy-carousel.min.js"></script>
+<script
+	type="module"
+	src="https://unpkg.com/@snappywc/carousel@latest/snappy-carousel.min.js"
+></script>
 ```
 
 ## Usage
-Just put a ```<snappy-carousel>``` anywhere in your markup and you're ready to go. This is a native web component and works in React, Vue, Svelte, Angular, and any other web framework because all @snappywc packages have 0 dependencies and are built using low-level APIs.
+
+Just put a `<snappy-carousel>` anywhere in your markup and you're ready to go. This is a native web component and works in React, Vue, Svelte, Angular, and any other web framework because all @snappywc packages have 0 dependencies and are built using low-level APIs.
 
 ```html
 <snappy-carousel>
-  <img src="//picsum.photos/seed/1/600/375" />
-  <img src="//picsum.photos/seed/2/600/375" />
-  <img src="//picsum.photos/seed/3/600/375" />
+	<img src="//picsum.photos/seed/1/600/375" />
+	<img src="//picsum.photos/seed/2/600/375" />
+	<img src="//picsum.photos/seed/3/600/375" />
 </snappy-carousel>
 ```
+
 That's it! Pat yourself on the back and grab a drink!
 
 ### Methods
+
 Simple is the @snappywc way.
 
-Method|Description
--|-
-.prev()|go to the previous slide
-.next()|go to the next slide
-.goToSlide(#)|go to slide at index #
+| Method        | Description              |
+| ------------- | ------------------------ |
+| .prev()       | go to the previous slide |
+| .next()       | go to the next slide     |
+| .goToSlide(#) | go to slide at index #   |
 
 There are no methods to manually refresh the carousel. Any content changes to the main slot will automatically trigger a refresh.
 
 ## Customization
+
 @snappywc components provide CSS variables, named slots and ::part() CSS selectors for custom styling. This provides greater flexibility than offering dozens of parameters that may or may not accomplish what you need.
 
 For a better idea of how this works, [check out the demos](https://codepen.io/kaicna/pen/PoErQyv)!
 
 ### CSS Variables and Defaults
+
 Change the basic layout and behavior of the carousel.
+
 ```scss
 snappy-carousel {
+	// slide width per breakpoint
+	--mobile: 100%;
+	--tablet: 50%; // >= 768
+	--desktop: 33.33%; // >= 1024
 
-  // slide width per breakpoint
-  --mobile: 100%;
-  --tablet: 50%; // >= 768
-  --desktop: 33.33%; // >= 1024
-
-  // styling
-  --gap: 0;
-  --icon-color: currentcolor;
-  --arrow-alignment: flex-end; //vertical, flex values
-  --arrow-size: 48px;
-  --indicator-size: 16px;
+	// styling
+	--gap: 0;
+	--icon-color: currentcolor;
+	--arrow-alignment: flex-end; //vertical, flex values
+	--arrow-size: 48px;
+	--indicator-size: 16px;
 }
 ```
 
 ### Slots
+
 Named slots allow you to customize the icons used for the previous button, next button, indicators and active indicators. These can be SVG icons, icons from a font, images, or even a custom component. Total freedom!
 
 Pro tip: you can use inline styles on a slotted element to override the color and size variables. There is an example of this in the demo.
+
 - prev-icon
 - next-icon
 - indicator-icon
 - indicator-icon-active
 
 An example using named slots to customize the previous and next icons using inline SVGs.
+
 ```html
 <snappy-carousel>
+	<!-- Default slot for slides -->
+	<img src="whatever" />
+	<img src="whatever" />
+	<img src="whatever" />
 
-  <!-- Default slot for slides -->
-  <img src="whatever" />
-  <img src="whatever" />
-  <img src="whatever" />
-  
-  <!-- Named slots for controls -->
-  <svg slot="prev-icon">
-    <path d="whatever" />
-  </svg>
+	<!-- Named slots for controls -->
+	<svg slot="prev-icon">
+		<path d="whatever" />
+	</svg>
 
-  <svg slot="next-icon">
-    <path d="whatever" />
-  </svg>
-
+	<svg slot="next-icon">
+		<path d="whatever" />
+	</svg>
 </snappy-carousel>
 ```
 
 ### Parts
+
 Web components have a bad reupation for being hard to style, but CSS ::part() selectors make it trivial to target an element inside the component's Shadow DOM and do anything you want to it.
+
 - carousel
 - track
 - indicators
@@ -110,22 +122,45 @@ Web components have a bad reupation for being hard to style, but CSS ::part() se
 - next
 
 An example using ::part() selectors to style the indicators and previous/next buttons.
+
 ```scss
 snappy-carousel {
+	&::part(indicators) {
+		position: absolute;
+		bottom: 0;
+		filter: drop-shadow(0 1px 2px black);
+	}
 
-  &::part(indicators) {
-    position: absolute;
-    bottom: 0;
-    filter: drop-shadow(0 1px 2px black);
-  }
-
-  &::part(prev),
-  &::part(next) {
-    filter: drop-shadow(0 1px 2px black);
-  }
-
+	&::part(prev),
+	&::part(next) {
+		filter: drop-shadow(0 1px 2px black);
+	}
 }
 ```
 
+## Accessibility
+
+This should be everyone's first priority when implementing a carousel. I had a blind roommate in college and carousels were the bane of his existence. If you're going to use a carousel, it needs to be done right. @snappywc web components cover all of the basics, including appropriate aria labels, aria roles, and announcing changes to screen readers.
+
+You may have noticed that `<snappy-carousel>` doesn't provide any default support for autoplay. That's because autoplay is terrible for everybody, but especially for users who depend on keyboard navigation or screen readers. That said, if you really need this feature, you can implement that on your own using the .next() method. Please be kind to your users and pause autoplay on hover, as in the example below.
+
+```js
+// autoplay is evil, but here's how you can do it
+const carousel = document.querySelector('snappy-carousel#custom')
+
+carousel.onmouseover = () => {
+	carousel.dataset.hovering = true
+}
+
+carousel.onmouseleave = () => {
+	carousel.dataset.hovering = false
+}
+
+setInterval(() => {
+	carousel.dataset.hovering !== 'true' && carousel.next()
+}, 5000)
+```
+
 ## So there you have it.
-An easy-to-use, fully-featured carousel that you can quickly drop into whatever you're working on and style however you want. No complicated configuration or init functions, just headache-free simplicity. All for less than 2kb.
+
+An easy-to-use, fully-featured carousel that you can quickly drop into whatever you're working on and style any way you want. No complicated configuration or init functions and out-of-the-box simplicity, all for less than 2kb.

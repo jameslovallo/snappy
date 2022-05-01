@@ -15,7 +15,6 @@ export default (() => {
 									flex-direction: column;
 									justify-content: var(--arrow-alignment, flex-end);
 									position: relative;
-									overflow: hidden;
 								}
 								.c__track {
 									display: flex;
@@ -80,19 +79,26 @@ export default (() => {
 									height: var(--indicator-size, 16px);
 									width: var(--indicator-size, 16px);
 								}
+								.c__announcer {
+									position: absolute;
+									height: 1px;
+									width: 1px;
+									clip: rect(0 0 0 0);
+    							overflow: hidden;
+								}
 							</style>
 							
 							<div class="c" part="carousel">
-								<slot class="c__track" part="track"></slot>
+								<slot class="c__track" part="track" role="list"></slot>
 								<div class="c__indicators" part="indicators"></div>
-								<button class="c__prev" part="prev">
+								<button class="c__prev" part="prev" aria-label="Go to previous slide">
 									<slot name="prev-icon">
 										<svg viewbox="0 0 24 24">
 											<path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/>
 										</svg>
 									</slot>
 								</button>
-								<button class="c__next" part="next">
+								<button class="c__next" part="next" aria-label="Go to next slide">
 									<slot name="next-icon">
 										<svg viewbox="0 0 24 24">
 											<path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
@@ -111,6 +117,7 @@ export default (() => {
 										</svg>
 									</slot>
 								</div>
+								<div class="c__announcer" aria-live="polite" aria-atomic="true"></div>
 							</div>
 						`
 				}
@@ -121,6 +128,7 @@ export default (() => {
 					const prev = c.querySelector('.c__prev')
 					const next = c.querySelector('.c__next')
 					const indicators = c.querySelector('.c__indicators')
+					const announcer = c.querySelector('.c__announcer')
 
 					// get indicator icons
 					const iSlot = c.querySelector('.c__i').assignedElements()[0]
@@ -161,8 +169,18 @@ export default (() => {
 						indicators.style.display = display
 					}
 
+					const announce = () => {
+						const current = this.slides.filter(
+							(slide) => slide.ariaHidden === 'false'
+						)
+						const from = Number(current[0].dataset.slideIndex) + 1
+						const to =
+							Number(current[current.length - 1].dataset.slideIndex) + 1
+						announcer.innerText = `Showing slides ${from}-${to} of ${this.slides.length}`
+					}
+
 					// hide controls if all slides showing
-					const debounce = (ms, fn) => {
+					const debounce = (fn, ms) => {
 						let timer
 						return function () {
 							clearTimeout(timer)
@@ -173,10 +191,12 @@ export default (() => {
 					}
 
 					new ResizeObserver(
-						debounce(500, (entries) => {
+						debounce((entries) => {
 							entries.forEach(this.toggleControls)
-						})
+						}, 500)
 					).observe(track)
+
+					track.addEventListener('scroll', debounce(announce, 500))
 
 					// handle slot change
 					track.addEventListener('slotchange', () => {
@@ -186,14 +206,18 @@ export default (() => {
 						// get slides
 						this.slides = track.assignedElements()
 
-						// activate indicators
+						// create indicators and handle slide updates
 						const observer = new IntersectionObserver(
 							(entries) => {
 								entries.forEach((entry) => {
-									const slideIndex = this.slides.indexOf(entry.target)
+									const slide = entry.target
+									const { slideIndex } = slide.dataset
 									const indicator = indicators.children[slideIndex]
+									const { isIntersecting } = entry
+
+									slide.ariaHidden = isIntersecting ? false : true
 									if (indicator) {
-										indicator.innerHTML = entry.isIntersecting ? iActive : i
+										indicator.innerHTML = isIntersecting ? iActive : i
 									}
 								})
 							},
@@ -205,8 +229,12 @@ export default (() => {
 
 						indicators.innerHTML = ''
 
-						this.slides.forEach((slide) => {
+						this.slides.forEach((slide, n) => {
+							slide.dataset.slideIndex = n
+							slide.setAttribute('role', 'list-item')
 							const indicator = document.createElement('button')
+							indicator.ariaLabel = 'Go to slide ' + (n + 1)
+
 							indicators.appendChild(indicator)
 							indicator.addEventListener('click', () => {
 								track.scrollLeft = slide.offsetLeft
@@ -215,10 +243,9 @@ export default (() => {
 						})
 
 						setTimeout(() => {
-							// re-enable snap
-							track.style.scrollSnapType = 'x mandatory'
-							// check if all slides showing
-							this.toggleControls()
+							track.style.scrollSnapType = 'x mandatory' // re-enable snap
+							this.toggleControls() // check if controls are needed
+							announce()
 						}, 1000)
 					})
 				}

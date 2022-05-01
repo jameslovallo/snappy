@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/carousel",
-	"version": "1.0.9",
+	"version": "1.0.10",
 	"description": "A snappy, customizable web component that works anywhere!",
 	"type": "module",
 	"main": "snappy-carousel.js",
@@ -31,12 +31,12 @@
 	},
 	"author": "James Lovallo",
 	"license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaina-agency/snappy.git"
-  },
-  "homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
 	"bugs": {
-    "url": "https://github.com/kaina-agency/snappy/issues"
-  }
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	}
 }
