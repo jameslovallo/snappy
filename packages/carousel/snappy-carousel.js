@@ -125,6 +125,7 @@ export default (() => {
 				connectedCallback() {
 					const c = this.shadowRoot
 					const track = c.querySelector('.c__track')
+					this.slides = track.assignedElements()
 					const prev = c.querySelector('.c__prev')
 					const next = c.querySelector('.c__next')
 					const indicators = c.querySelector('.c__indicators')
