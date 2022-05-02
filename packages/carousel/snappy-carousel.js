@@ -125,7 +125,6 @@ export default (() => {
 				connectedCallback() {
 					const c = this.shadowRoot
 					const track = c.querySelector('.c__track')
-					this.slides = track.assignedElements()
 					const prev = c.querySelector('.c__prev')
 					const next = c.querySelector('.c__next')
 					const indicators = c.querySelector('.c__indicators')
@@ -171,10 +170,10 @@ export default (() => {
 						const current = this.slides.filter(
 							(slide) => slide.ariaHidden === 'false'
 						)
-						const from = Number(current[0].dataset.slideIndex) + 1
-						const to =
-							Number(current[current.length - 1].dataset.slideIndex) + 1
-						announcer.innerText = `Showing slides ${from}-${to} of ${this.slides.length}`
+						const from = +current[0].dataset.slideIndex + 1
+						const to = +current[current.length - 1].dataset.slideIndex + 1
+						const message = `Showing slides ${from}-${to} of ${this.slides.length}`
+						if (announcer.innerText !== message) announcer.innerText = message
 					}
 
 					const debounce = (fn, ms) => {
@@ -215,7 +214,7 @@ export default (() => {
 						}
 					)
 
-					track.addEventListener('slotchange', () => {
+					this.initCarousel = () => {
 						track.style.scrollSnapType = ''
 
 						this.slides = track.assignedElements()
@@ -239,7 +238,10 @@ export default (() => {
 							this.toggleControls()
 							announce()
 						}, 1000)
-					})
+					}
+
+					this.initCarousel()
+					track.addEventListener('slotchange', this.initCarousel)
 				}
 			}
 			customElements.define('snappy-carousel', snappyCarousel)
