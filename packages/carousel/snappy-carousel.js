@@ -130,7 +130,6 @@ export default (() => {
 					const indicators = c.querySelector('.c__indicators')
 					const announcer = c.querySelector('.c__announcer')
 
-					// get indicator icons
 					const iSlot = c.querySelector('.c__i').assignedElements()[0]
 					const iActiveSlot = c
 						.querySelector('.c__i__active')
@@ -138,11 +137,9 @@ export default (() => {
 					const iDefault = c.querySelector('.c__i svg')
 					const iActiveDefault = c.querySelector('.c__i__active svg')
 
-					// assign indicator icons
 					let i = (iSlot || iDefault).outerHTML
 					let iActive = (iActiveSlot || iActiveDefault).outerHTML
 
-					// methods
 					this.prev = () => {
 						if (track.scrollLeft === 0) {
 							track.scrollLeft = track.scrollWidth
@@ -179,7 +176,6 @@ export default (() => {
 						announcer.innerText = `Showing slides ${from}-${to} of ${this.slides.length}`
 					}
 
-					// hide controls if all slides showing
 					const debounce = (fn, ms) => {
 						let timer
 						return function () {
@@ -198,35 +194,30 @@ export default (() => {
 
 					track.addEventListener('scroll', debounce(announce, 500))
 
-					// handle slot change
+					const observer = new IntersectionObserver(
+						(entries) => {
+							entries.forEach((entry) => {
+								const slide = entry.target
+								const { slideIndex } = slide.dataset
+								const indicator = indicators.children[slideIndex]
+								const { isIntersecting } = entry
+
+								slide.ariaHidden = isIntersecting ? false : true
+								if (indicator) {
+									indicator.innerHTML = isIntersecting ? iActive : i
+								}
+							})
+						},
+						{
+							root: track,
+							threshold: 0.5,
+						}
+					)
+
 					track.addEventListener('slotchange', () => {
-						// disable snap to prevent starting on wrong slide
 						track.style.scrollSnapType = ''
 
-						// get slides
 						this.slides = track.assignedElements()
-
-						// create indicators and handle slide updates
-						const observer = new IntersectionObserver(
-							(entries) => {
-								entries.forEach((entry) => {
-									const slide = entry.target
-									const { slideIndex } = slide.dataset
-									const indicator = indicators.children[slideIndex]
-									const { isIntersecting } = entry
-
-									slide.ariaHidden = isIntersecting ? false : true
-									if (indicator) {
-										indicator.innerHTML = isIntersecting ? iActive : i
-									}
-								})
-							},
-							{
-								root: track,
-								threshold: 0.5,
-							}
-						)
-
 						indicators.innerHTML = ''
 
 						this.slides.forEach((slide, n) => {
@@ -243,8 +234,8 @@ export default (() => {
 						})
 
 						setTimeout(() => {
-							track.style.scrollSnapType = 'x mandatory' // re-enable snap
-							this.toggleControls() // check if controls are needed
+							track.style.scrollSnapType = 'x mandatory'
+							this.toggleControls()
 							announce()
 						}, 1000)
 					})
