@@ -171,8 +171,9 @@ export default (() => {
 							(slide) => slide.ariaHidden === 'false'
 						)
 						const from = +current[0].dataset.slideIndex + 1
-						const to = +current[current.length - 1].dataset.slideIndex + 1
-						const message = `Showing slides ${from}-${to} of ${this.slides.length}`
+						let to = +current[current.length - 1].dataset.slideIndex + 1
+						to = to === from ? '' : '-' + to
+						const message = `Showing slide ${from}${to} of ${this.slides.length}`
 						if (announcer.innerText !== message) announcer.innerText = message
 					}
 
