@@ -56,7 +56,7 @@ The following methods can be used to control the carousel. Note that there are n
 
 ### Slide Events
 
-It is a common requirement to execute code when a slide becomes visible or is hidden, perhaps to apply an animation or to support analytics. Each slide provides a pair of events that you can listen for to support these requirements. You can either target an individual slide or loop over every slide in the carousel using `this.slides`.
+It is a common requirement to execute code when a slide becomes visible or is hidden, perhaps to apply an animation or to support analytics. Each slide provides a pair of events that you can listen for to support these requirements. You can either target an individual slide or loop over every slide in the carousel using the `slides` attribute.
 
 | Event   | Description                 |
 | ------- | --------------------------- |
@@ -80,7 +80,7 @@ specialSlide.addEventListener('hidden', () => {
 
 // target every slide
 carousel.slides.forEach((slide) => {
-	slide.addEventListener('hidden', () => {
+	slide.addEventListener('visible', () => {
 		console.log(slide)
 	})
 })
