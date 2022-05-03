@@ -42,9 +42,11 @@ Just put a `<snappy-carousel>` anywhere in your markup and you're ready to go. T
 
 That's it! Pat yourself on the back and grab a drink!
 
-### Methods
+## API
 
-Simple is the @snappywc way.
+### Carousel Methods
+
+The following methods can be used to control the carousel. Note that there are no methods to manually refresh or re-initialize the carousel: any content changes to the main slot will automatically trigger a refresh.
 
 | Method        | Description              |
 | ------------- | ------------------------ |
@@ -52,7 +54,33 @@ Simple is the @snappywc way.
 | .next()       | go to the next slide     |
 | .goToSlide(#) | go to slide at index #   |
 
-There are no methods to manually refresh the carousel. Any content changes to the main slot will automatically trigger a refresh.
+### Slide Events
+
+It is a common requirement to execute code when an becomes visible or hidden, perhaps to apply an animation or handle analytics. Each slide provides a set of events that you can listen. You can also target every slide in the carousel using `this.slides`.
+
+| Event   | Description                 |
+| ------- | --------------------------- |
+| visible | fired when slide is visible |
+| hidden  | fired when slide is hidden  |
+
+```js
+const carousel = document.querySelector('snappy-carousel#demo')
+const specialSlide = carousel.querySelector('.special')
+
+// target a specific slide
+specialSlide.addEventListener('visible', () => {
+	specialSlide.setAttribute('class', 'animate__animated animate__pulse')
+})
+
+specialSlide.addEventListener('hidden', () => {
+	specialSlide.setAttribute('class', '')
+})
+
+// target every slide
+carousel.slides.forEach((slide) => {
+	console.log(slide)
+})
+```
 
 ## Customization
 
