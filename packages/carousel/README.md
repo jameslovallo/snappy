@@ -56,12 +56,14 @@ The following methods can be used to control the carousel. Note that there are n
 
 ### Slide Events
 
-It is a common requirement to execute code when an becomes visible or hidden, perhaps to apply an animation or handle analytics. Each slide provides a set of events that you can listen. You can also target every slide in the carousel using `this.slides`.
+It is a common requirement to execute code when a slide becomes visible or is hidden, perhaps to apply an animation or to support analytics. Each slide provides a pair of events that you can listen for to support these requirements. You can either target an individual slide or loop over every slide in the carousel using `this.slides`.
 
 | Event   | Description                 |
 | ------- | --------------------------- |
 | visible | fired when slide is visible |
 | hidden  | fired when slide is hidden  |
+
+An example using `visible` and `hidden` events to apply slide effects.
 
 ```js
 const carousel = document.querySelector('snappy-carousel#demo')
@@ -78,13 +80,15 @@ specialSlide.addEventListener('hidden', () => {
 
 // target every slide
 carousel.slides.forEach((slide) => {
-	console.log(slide)
+	slide.addEventListener('hidden', () => {
+		console.log(slide)
+	})
 })
 ```
 
 ## Customization
 
-@snappywc components provide CSS variables, named slots and ::part() CSS selectors for custom styling. This provides greater flexibility than offering dozens of parameters that may or may not accomplish what you need.
+@snappywc components provide CSS variables, named slots and special CSS selectors for custom styling. This provides greater flexibility than offering dozens of parameters that may or may not accomplish what you need.
 
 For a better idea of how this works, [check out the demos](https://codepen.io/kaicna/pen/PoErQyv)!
 
@@ -149,7 +153,7 @@ Web components have a reputation for being hard to style, but CSS `::part()` sel
 - prev
 - next
 
-A simple example using ::part() selectors to style the indicators and previous/next buttons.
+A simple example using `::part()` selectors to style the indicators and previous/next buttons.
 
 ```scss
 snappy-carousel {
@@ -170,7 +174,7 @@ snappy-carousel {
 
 This should be everyone's first priority when implementing a carousel. I had a blind roommate in college and carousels were the bane of his existence. If you're going to use a carousel, it needs to be done right. @snappywc web components cover all of the basics, including appropriate aria labels, aria roles, and announcing changes to screen readers.
 
-You may have noticed that `<snappy-carousel>` doesn't provide any default support for auto-play. That's because auto-play is terrible for everybody, but especially for users who depend on keyboard navigation or screen readers. That said, if you really need auto-play, you can easily implement it using the .next() method. Please be kind to your users and pause auto-play on hover, as in the example below.
+You may have noticed that `<snappy-carousel>` doesn't provide any default support for auto-play. That's because auto-play is terrible for everybody, but especially for users who depend on keyboard navigation or screen readers. That said, if you really need auto-play, you can easily implement it using the `.next()` method. Please be kind to your users and pause auto-play on hover, as in the example below.
 
 ```js
 // auto-play is evil, but here's how you can do it
