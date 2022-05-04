@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/carousel",
-	"version": "1.0.19",
+	"version": "1.0.20",
 	"description": "A snappy, customizable web component that works anywhere!",
 	"type": "module",
 	"main": "snappy-carousel.min.js",
@@ -28,9 +28,6 @@
 		"slots",
 		"::part"
 	],
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
 	"author": "James Lovallo",
 	"license": "ISC",
 	"repository": {

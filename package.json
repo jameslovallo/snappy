@@ -4,8 +4,8 @@
 		"type": "git",
 		"url": "git+https://github.com/kaina-agency/snappy.git"
 	},
-	"workspaces": [
-		"packages/*"
-	],
+	"scripts": {
+		"publish-carousel" : "cd packages/carousel && npm version patch && git commit -a && npm publish"
+	},
 	"homepage": "https://github.com/kaina-agency/snappy#readme"
 }
