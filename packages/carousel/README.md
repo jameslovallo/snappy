@@ -23,8 +23,8 @@ Option 2: In your markup.
 
 ```html
 <script
-	type="module"
-	src="https://unpkg.com/@snappywc/carousel@latest/snappy-carousel.min.js"
+  type="module"
+  src="https://unpkg.com/@snappywc/carousel@latest/snappy-carousel.min.js"
 ></script>
 ```
 
@@ -34,9 +34,9 @@ Just put a `<snappy-carousel>` anywhere in your markup and you're ready to go. T
 
 ```html
 <snappy-carousel>
-	<img src="//picsum.photos/seed/1/600/375" />
-	<img src="//picsum.photos/seed/2/600/375" />
-	<img src="//picsum.photos/seed/3/600/375" />
+  <img src="//picsum.photos/seed/1/600/375" />
+  <img src="//picsum.photos/seed/2/600/375" />
+  <img src="//picsum.photos/seed/3/600/375" />
 </snappy-carousel>
 ```
 
@@ -71,18 +71,18 @@ const specialSlide = carousel.querySelector('.special')
 
 // target a specific slide
 specialSlide.addEventListener('visible', () => {
-	specialSlide.setAttribute('class', 'animate__animated animate__pulse')
+  specialSlide.setAttribute('class', 'animate__animated animate__pulse')
 })
 
 specialSlide.addEventListener('hidden', () => {
-	specialSlide.setAttribute('class', '')
+  specialSlide.setAttribute('class', '')
 })
 
 // target every slide
 carousel.slides.forEach((slide) => {
-	slide.addEventListener('visible', () => {
-		console.log(slide)
-	})
+  slide.addEventListener('visible', () => {
+    console.log(slide)
+  })
 })
 ```
 
@@ -98,17 +98,17 @@ Change the basic layout and behavior of the carousel.
 
 ```scss
 snappy-carousel {
-	// slide width per breakpoint
-	--mobile: 100%;
-	--tablet: 50%; // >= 768
-	--desktop: 33.33%; // >= 1024
+  // slide width per breakpoint
+  --mobile: 100%;
+  --tablet: 50%; // >= 768
+  --desktop: 33.33%; // >= 1024
 
-	// styling
-	--gap: 0;
-	--icon-color: currentcolor;
-	--arrow-alignment: flex-end; //vertical, flex values
-	--arrow-size: 48px;
-	--indicator-size: 16px;
+  // styling
+  --gap: 0;
+  --icon-color: currentcolor;
+  --arrow-alignment: flex-end; //vertical, flex values
+  --arrow-size: 48px;
+  --indicator-size: 16px;
 }
 ```
 
@@ -127,19 +127,19 @@ An example using named slots to customize the previous and next icons using inli
 
 ```html
 <snappy-carousel>
-	<!-- Default slot for slides -->
-	<img src="whatever" />
-	<img src="whatever" />
-	<img src="whatever" />
+  <!-- Default slot for slides -->
+  <img src="whatever" />
+  <img src="whatever" />
+  <img src="whatever" />
 
-	<!-- Named slots for controls -->
-	<svg slot="prev-icon">
-		<path d="whatever" />
-	</svg>
+  <!-- Named slots for controls -->
+  <svg slot="prev-icon">
+    <path d="whatever" />
+  </svg>
 
-	<svg slot="next-icon">
-		<path d="whatever" />
-	</svg>
+  <svg slot="next-icon">
+    <path d="whatever" />
+  </svg>
 </snappy-carousel>
 ```
 
@@ -157,16 +157,16 @@ A simple example using `::part()` selectors to style the indicators and previous
 
 ```scss
 snappy-carousel {
-	&::part(indicators) {
-		position: absolute;
-		bottom: 0;
-		filter: drop-shadow(0 1px 2px black);
-	}
+  &::part(indicators) {
+    position: absolute;
+    bottom: 0;
+    filter: drop-shadow(0 1px 2px black);
+  }
 
-	&::part(prev),
-	&::part(next) {
-		filter: drop-shadow(0 1px 2px black);
-	}
+  &::part(prev),
+  &::part(next) {
+    filter: drop-shadow(0 1px 2px black);
+  }
 }
 ```
 
@@ -181,18 +181,18 @@ You may have noticed that `<snappy-carousel>` doesn't provide any default suppor
 const carousel = document.querySelector('snappy-carousel#custom')
 
 carousel.onmouseover = () => {
-	carousel.dataset.hovering = true
+  carousel.dataset.hovering = true
 }
 
 carousel.onmouseleave = () => {
-	carousel.dataset.hovering = false
+  carousel.dataset.hovering = false
 }
 
 setInterval(() => {
-	carousel.dataset.hovering !== 'true' && carousel.next()
+  carousel.dataset.hovering !== 'true' && carousel.next()
 }, 5000)
 ```
 
 ## So there you have it.
 
-An easy-to-use, fast and accessible carousel that you can quickly use anywhere and style any way you like it, all for less than 2kb.
+An easy-to-use, fast and accessible carousel that you can quickly use anywhere and style any way you like, all for less than 2kb.
