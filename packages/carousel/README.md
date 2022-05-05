@@ -22,10 +22,9 @@ import '@snappywc/carousel'
 Option 2: In your markup.
 
 ```html
-<script
-  type="module"
-  src="https://unpkg.com/@snappywc/carousel@latest/snappy-carousel.min.js"
-></script>
+<script type="module">
+  import "//unpkg.com/@snappywc/carousel";
+</script>
 ```
 
 ## Usage
