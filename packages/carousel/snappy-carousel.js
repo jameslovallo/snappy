@@ -3,7 +3,7 @@ export default (() => {
 		case true:
 			break
 		case false:
-			class snappyCarousel extends HTMLElement {
+			class carousel extends HTMLElement {
 				constructor() {
 					super()
 					this.attachShadow({ mode: 'open' })
@@ -98,7 +98,7 @@ export default (() => {
 					track.addEventListener('scroll', debounce(announce, 500))
 
 					// do all the things
-					this.initCarousel = () => {
+					this.init = () => {
 						// make sure first slide is first
 						track.style.scrollSnapType = ''
 
@@ -152,12 +152,12 @@ export default (() => {
 					}
 
 					// handle connected
-					this.initCarousel()
+					this.init()
 
 					//handle content change
-					track.addEventListener('slotchange', this.initCarousel)
+					track.addEventListener('slotchange', this.init)
 				}
 			}
-			customElements.define('snappy-carousel', snappyCarousel)
+			customElements.define('snappy-carousel', carousel)
 	}
 })()
