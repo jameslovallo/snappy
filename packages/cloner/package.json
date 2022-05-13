@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/cloner",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A custom element to create little components on-the-fly.",
 	"type": "module",
 	"main": "snappy-cloner-min.js",
@@ -36,7 +36,7 @@
 		"url": "git+https://github.com/kaina-agency/snappy.git"
 	},
 	"scripts": {
-		"publish": "npm version patch && git commit -a && git push && npm publish"
+		"publish": "npm version patch && git commit -a && npm publish"
 	},
 	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
 	"bugs": {
