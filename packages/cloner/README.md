@@ -41,7 +41,7 @@ Option 2: In your markup.
 
 Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poabbbw?editors=0010).
 
-![](../../screenshots/snappy-cloner.png)
+![](https://raw.githubusercontent.com/kaina-agency/snappy/main/screenshots/snappy-cloner.png)
 
 1. Create a ```template``` with a unique ID, like this ```<template id="staff">```
 2. Add a ```props``` attribute and add some prop names, like this: ```props="name role photo email"```
