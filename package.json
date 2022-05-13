@@ -5,8 +5,8 @@
 		"url": "git+https://github.com/kaina-agency/snappy.git"
 	},
 	"scripts": {
-		"publish-carousel" : "cd packages/carousel && npm version patch && git commit -a && npm publish",
-		"publish-cloner" : "cd packages/cloner && npm version patch && git commit -a && npm publish"
+		"publish-carousel" : "cd packages/carousel && npm version patch && git commit -a && git push && npm publish",
+		"publish-cloner" : "cd packages/cloner && npm version patch && git commit -a && git push && npm publish"
 	},
 	"homepage": "https://github.com/kaina-agency/snappy#readme"
 }

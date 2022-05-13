@@ -36,6 +36,9 @@
 		"type": "git",
 		"url": "git+https://github.com/kaina-agency/snappy.git"
 	},
+	"scripts": {
+		"publish": "npm version patch && git commit -a && git push && npm publish"
+	},
 	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
 	"bugs": {
 		"url": "https://github.com/kaina-agency/snappy/issues"
