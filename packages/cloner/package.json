@@ -1,0 +1,41 @@
+{
+	"name": "@snappywc/cloner",
+	"version": "1.0.22",
+	"description": "A 333 byte (brotli) element to create custom components on-the-fly.",
+	"type": "module",
+	"main": "snappy-cloner.min.js",
+	"module": "snappy-cloner.min.js",
+	"keywords": [
+		"snappy",
+		"cloner",
+		"templating",
+		"reusable",
+		"web component",
+		"web components",
+		"custom element custom element",
+		"custom element custom element",
+		"react",
+		"vue",
+		"svelte",
+		"vanilla",
+		"small",
+		"fast",
+		"flexible",
+		"customizable",
+		"accessible",
+		"accessibility",
+		"slot",
+		"slots",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	}
+}
