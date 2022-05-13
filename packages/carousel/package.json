@@ -3,8 +3,8 @@
 	"version": "1.0.22",
 	"description": "A snappy, customizable web component that works anywhere!",
 	"type": "module",
-	"main": "snappy-carousel.min.js",
-	"module": "snappy-carousel.min.js",
+	"main": "snappy-carousel-min.js",
+	"module": "snappy-carousel-min.js",
 	"keywords": [
 		"snappy",
 		"carousel",

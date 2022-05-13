@@ -3,8 +3,8 @@
 	"version": "1.0.4",
 	"description": "A custom element to create little components on-the-fly.",
 	"type": "module",
-	"main": "snappy-cloner.min.js",
-	"module": "snappy-cloner.min.js",
+	"main": "snappy-cloner-min.js",
+	"module": "snappy-cloner-min.js",
 	"keywords": [
 		"snappy",
 		"cloner",
