@@ -1,6 +1,6 @@
 # &lt;snappy-cloner&gt;
 
-A custom element to create little components on-the-fly. **333 bytes** (brotli).
+A custom element to create little components on-the-fly. **< 500 bytes** (brotli).
 
 [Demo](https://codepen.io/kaina/pen/poabbbw?editors=0010)
 
