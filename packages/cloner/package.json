@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/cloner",
-	"version": "1.0.3",
+	"version": "1.0.2",
 	"description": "A custom element to create little components on-the-fly.",
 	"type": "module",
 	"main": "snappy-cloner.min.js",
