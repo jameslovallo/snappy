@@ -1,6 +1,6 @@
 # &lt;snappy-cloner&gt;
 
-A custom element to create little components on-the-fly. 333 bytes (brotli).
+A custom element to create little components on-the-fly. **333 bytes** (brotli).
 
 [Demo](https://codepen.io/kaina/pen/poabbbw?editors=0010)
 
@@ -54,6 +54,10 @@ Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poab
 (Inline CSS removed for clarity.)
 
 ```html
+<script type="module">
+  import "//unpkg.com/@snappywc/cloner";
+</script>
+
 <template id="staff" props="name role email photo" photo="https://static.wikia.nocookie.net/star-wars-canon/images/f/f0/PHASE2REX.jpg">
 	<div>
 		<img if="photo" src="{photo}" />

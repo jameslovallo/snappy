@@ -1,7 +1,7 @@
 {
 	"name": "@snappywc/cloner",
-	"version": "1.0.1",
-	"description": "A 333 byte (brotli) custom element to create little components on-the-fly.",
+	"version": "1.0.2",
+	"description": "A custom element to create little components on-the-fly.",
 	"type": "module",
 	"main": "snappy-cloner.min.js",
 	"module": "snappy-cloner.min.js",
