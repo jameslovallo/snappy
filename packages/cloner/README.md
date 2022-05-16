@@ -33,7 +33,7 @@ Option 2: In your markup.
 
 1. Clone a template using custom prop names.
 2. Use with any number of custom templates
-3. Basic conditional rendering.
+3. Advanced conditional rendering.
 4. Optional default prop values.
 5. Choose to render markup in Shadow DOM or regular DOM.
 
@@ -43,12 +43,12 @@ Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poab
 
 ![](https://raw.githubusercontent.com/kaina-agency/snappy/main/screenshots/snappy-cloner.png)
 
-1. Create a ```template``` with a unique ID, like this ```<template id="staff">```
+1. Create a ```template``` with a unique ID, like this: ```<template id="staff">```
 2. Add a ```props``` attribute and add some prop names, like this: ```props="name role photo email"```
-3. Add markup to your template using your props in moustaches, like this: ```{name}```.
-4. Add ```if``` attributes for conditional rendering, like this: ```<img if="photo"/>```
-5. For default prop values, just assign them to the template tag, like this: ```<template id="staff" role="Developer">```
-6. If you want your styles encapsulated in the Shadow DOM, or if you want to use slots (```<slot>```) in your template, you can enable the Shadow DOM by adding ```shadow="true"``` to your template.
+3. Add markup to your template using your props in moustaches, like this: ```<b>{name}</b>```
+4. Add ```if``` attributes for conditional rendering, like this: ```<img if="photo"/>``` or ```<div if="role || description">```
+5. For default prop values, just assign them to the template tag, like this: ```<template id="staff" role="Clone Trooper">```
+6. If you want your styles encapsulated in the Shadow DOM, or if you want to use slots (```<slot>```) in your template, you can enable the Shadow DOM by adding the attribute ```shadow``` to your template, like this ```<template shadow>```.
 
 ### Example Code
 (Inline CSS removed for clarity.)
@@ -61,7 +61,7 @@ Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poab
 <template id="staff" props="name role email photo" photo="https://static.wikia.nocookie.net/star-wars-canon/images/f/f0/PHASE2REX.jpg">
   <div>
     <img if="photo" src="{photo}" />
-    <span>
+    <span if="name || role">
       <b if="name">{name}</b>
       <small if="role">{role}</small>
     </span>

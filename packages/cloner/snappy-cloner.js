@@ -10,29 +10,35 @@ export default (() => {
 					const id = this.getAttribute('template')
 					const template = document.getElementById(id)
 					this.props = template.getAttribute('props')?.match(/[a-z]+/g)
-					this.shadow = template.getAttribute('shadow')
 					this.template = template.cloneNode(true)
 
-					if (this.shadow === 'true') {
+					if (typeof template.getAttribute('shadow') === 'string') {
 						this.attachShadow({ mode: 'open' })
 					}
 				}
 
 				connectedCallback() {
 					this.props?.forEach((prop) => {
-						const moustache = `{${prop}}`
-						const value = this.getAttribute(prop)
-						const fallback = this.template.getAttribute(prop)
-						const el = this.template.content.querySelector(`[if=${prop}]`)
-						!value && !fallback && el?.remove()
-						el?.removeAttribute('if')
 						this.template.innerHTML = this.template.innerHTML.replaceAll(
-							moustache,
-							value || fallback
+							`{${prop}}`,
+							this.getAttribute(prop) || this.template.getAttribute(prop)
 						)
 					})
 
+					this.template.content.querySelectorAll('[if]').forEach((el) => {
+						let condition = el.getAttribute('if')
+						const condProps = condition?.match(/[a-z]+/g)
+						condProps.forEach((prop) => {
+							condition = condition.replaceAll(prop, !!this.getAttribute(prop))
+						})
+						!eval(condition) && el.remove()
+					})
+
 					;(this.shadowRoot || this).innerHTML = this.template.innerHTML
+
+					this.shadowRoot?.querySelectorAll('slot').forEach((slot) => {
+						!slot.assignedElements().length && slot.remove()
+					})
 				}
 			}
 
