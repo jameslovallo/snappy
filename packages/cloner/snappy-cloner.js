@@ -29,11 +29,13 @@ export default (() => {
 						let condition = el.getAttribute('if')
 						const condProps = condition?.match(/[a-z]+/g)
 						condProps.forEach((prop) => {
-							condition = condition.replaceAll(prop, !!this.getAttribute(prop))
+							condition = condition.replaceAll(
+								prop,
+								!!this.getAttribute(prop) || !!this.template.getAttribute(prop)
+							)
 						})
 						!eval(condition) && el.remove()
 					})
-
 					;(this.shadowRoot || this).innerHTML = this.template.innerHTML
 
 					this.shadowRoot?.querySelectorAll('slot').forEach((slot) => {
