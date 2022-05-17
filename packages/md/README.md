@@ -54,11 +54,11 @@ import '@snappywc/md'
 
 #### A note about rendering inline code blocks:
 
-It is always unsafe to include unescaped HTML blocks in your page's markup. If you want to highlight an inline code block between &lt;snappy-md&gt; tags, wrap the code in the special html comment **&lt;!--safe ... safe--&gt;**. This will allow you to safely include your code snippet, but it also helps preserve code formatting because prettier and beautify will ignore formatting for HTML comments. The comments will be removed automatically when the code is highlighted, leaving you with a perfect-looking code snippet.
+It is always unsafe to include unescaped HTML blocks in your page's markup. If you want to highlight an inline code block between ```<snappy-md>``` tags, wrap the code in the special html comment ```<!--safe ... safe-->```. This will allow you to safely include your code snippet, but it also helps preserve code formatting because prettier and beautify will ignore formatting for HTML comments. The comments will be removed automatically when the code is highlighted, leaving you with a perfect-looking code snippet.
 
 ## Styling
 
-&lt;snappy-md&gt; provides a **theme** attribute that you can use to change the syntax highlighting theme. Any highlight.js theme is support, and you can find additional unoffical themes online. You may be wondering why highlight.js instead of Prism.js, and the answer is simple: highlight.js supports many more languages out of the box.
+```<snappy-md>``` provides a **theme** attribute that you can use to change the syntax highlighting theme. Any highlight.js theme is support, and you can find additional unoffical themes online. You may be wondering why highlight.js instead of Prism.js, and the answer is simple: highlight.js supports many more languages out of the box.
 
 You can also nest a style tag inside the element to pass styles into the Shadow DOM.
 
