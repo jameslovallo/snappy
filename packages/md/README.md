@@ -17,7 +17,7 @@ Option 1: In your markup.
 
 ```html
 <script>
-	import "//unpkg.com/@snappywc/md";
+  import "//unpkg.com/@snappywc/md";
 </script>
 ```
 
@@ -43,12 +43,12 @@ import '@snappywc/md'
 
 ```html
 <snappy-md>
-	# Heading
+  # Heading
 
-	- List item
-	- List item
+  - List item
+  - List item
 
-	[A link](https://example.com)
+  [A link](https://example.com)
 </snappy-md>
 ```
 
@@ -72,18 +72,18 @@ You can also nest a style tag inside the element to pass styles into the Shadow 
 
 ```html
 <snappy-md>
-	# Heading
+  # Heading
 
-	- List item
-	- List item
+  - List item
+  - List item
 
-	[A link](https://example.com)
-	
-	<style>
-		h1 {color: blue;}
-		ul {color: orange;}
-		a {color: green;}
-	</style>
+  [A link](https://example.com)
+  
+  <style>
+    h1 {color: blue;}
+    ul {color: orange;}
+    a {color: green;}
+  </style>
 </snappy-md>
 ```
 
@@ -93,23 +93,23 @@ Since [marked](https://marked.js.org/) allows HTML in markdown, and web cumponen
 
 ```html
 <snappy-md>
-	# Weeee, web components in markdown!
-			
-	- Super easy
-	- Works everywhere
+  # Weeee, web components in markdown!
 
-	<script type="module">
-		import "//unpkg.com/@snappywc/carousel"
-	</script>
+  - Super easy
+  - Works everywhere
 
-	<snappy-carousel style="--mobile: 50%; --gap: 8px;">
-		<img src="//picsum.photos/seed/1/400/250" />
-		<img src="//picsum.photos/seed/2/400/250" />
-		<img src="//picsum.photos/seed/3/400/250" />
-	</snappy-carousel>
-	
-	## What a nice carousel
-	
-	You get the idea.
+  <script type="module">
+    import "//unpkg.com/@snappywc/carousel"
+  </script>
+
+  <snappy-carousel style="--mobile: 50%; --gap: 8px;">
+    <img src="//picsum.photos/seed/1/400/250" />
+    <img src="//picsum.photos/seed/2/400/250" />
+    <img src="//picsum.photos/seed/3/400/250" />
+  </snappy-carousel>
+
+  ## What a nice carousel
+
+  You get the idea.
 </snappy-md>
 ```
