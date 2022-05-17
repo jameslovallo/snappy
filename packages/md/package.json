@@ -1,0 +1,48 @@
+{
+	"name": "@snappywc/md",
+	"version": "1.0.1",
+	"description": "The little markdown element that can.",
+	"type": "module",
+	"main": "dist/snappy-md-bundle.js",
+	"module": "dist/snappy-md-bundle.js",
+	"keywords": [
+		"snappy",
+		"md",
+		"markdown",
+		"render",
+		"web component",
+		"web components",
+		"custom element",
+		"custom elements",
+		"react",
+		"vue",
+		"svelte",
+		"vanilla",
+		"small",
+		"fast",
+		"flexible",
+		"customizable",
+		"accessible",
+		"accessibility",
+		"slot",
+		"slots",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	},
+	"dependencies": {
+		"esbuild": "^0.14.39",
+		"marked": "^4.0.15"
+	},
+	"scripts": {
+		"build": "esbuild snappy-md.js --bundle --format=esm --minify --tree-shaking=true --outfile=dist/snappy-md-bundle.js"
+	}
+}
