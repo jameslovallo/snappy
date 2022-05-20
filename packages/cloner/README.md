@@ -25,7 +25,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-	import '//unpkg.com/@snappywc/cloner'
+  import '//unpkg.com/@snappywc/cloner'
 </script>
 ```
 
@@ -56,73 +56,73 @@ Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poab
 
 ```html
 <script type="module">
-	import '//unpkg.com/@snappywc/cloner'
+  import '//unpkg.com/@snappywc/cloner'
 </script>
 
 <template
-	id="staff"
-	props="name role email photo"
-	photo="https://static.wikia.nocookie.net/star-wars-canon/images/f/f0/PHASE2REX.jpg"
+  id="staff"
+  props="name role email photo"
+  photo="https://static.wikia.nocookie.net/star-wars-canon/images/f/f0/PHASE2REX.jpg"
 >
-	<div>
-		<img if="photo" src="{photo}" />
-		<span if="name || role">
-			<b if="name">{name}</b>
-			<small if="role">{role}</small>
-		</span>
-		<a if="email" href="{email}">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="#1976D2">
-				<path
-					d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"
-				/>
-			</svg>
-		</a>
-	</div>
+  <div>
+    <img if="photo" src="{photo}" />
+    <span if="name || role">
+      <b if="name">{name}</b>
+      <small if="role">{role}</small>
+    </span>
+    <a if="email" href="{email}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#1976D2">
+        <path
+          d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"
+        />
+      </svg>
+    </a>
+  </div>
 </template>
 
 <snappy-cloner
-	template="staff"
-	name="Fatimah Maimunah"
-	role="Chief Executive Officer"
-	email="#"
-	photo="https://bit.ly/3FIADMM"
+  template="staff"
+  name="Fatimah Maimunah"
+  role="Chief Executive Officer"
+  email="#"
+  photo="https://bit.ly/3FIADMM"
 ></snappy-cloner>
 
 <snappy-cloner
-	template="staff"
-	name="Charlie Gardiner"
-	role="Chief Financial Officer"
-	email="#"
-	photo="https://bit.ly/3L4nYVe"
+  template="staff"
+  name="Charlie Gardiner"
+  role="Chief Financial Officer"
+  email="#"
+  photo="https://bit.ly/3L4nYVe"
 ></snappy-cloner>
 
 <snappy-cloner
-	template="staff"
-	name="Ashley Fox"
-	role="Chief Technical Officer"
-	email="#"
-	photo="https://bit.ly/3FyBTSk"
+  template="staff"
+  name="Ashley Fox"
+  role="Chief Technical Officer"
+  email="#"
+  photo="https://bit.ly/3FyBTSk"
 ></snappy-cloner>
 
 <snappy-cloner
-	template="staff"
-	name="Areeb Mcgowan"
-	role="Chief Operations Officer"
-	email="#"
-	photo="https://bit.ly/3sv2Kts"
+  template="staff"
+  name="Areeb Mcgowan"
+  role="Chief Operations Officer"
+  email="#"
+  photo="https://bit.ly/3sv2Kts"
 ></snappy-cloner>
 
 <snappy-cloner
-	template="staff"
-	name="Default values!"
-	role="Photo prop wasn't set, falls back to template default."
-	email="#"
+  template="staff"
+  name="Default values!"
+  role="Photo prop wasn't set, falls back to template default."
+  email="#"
 ></snappy-cloner>
 
 <snappy-cloner
-	template="staff"
-	name="Conditional rendering!"
-	role="Email prop wasn't set, link was hidden. See 'if' attribute in the template."
+  template="staff"
+  name="Conditional rendering!"
+  role="Email prop wasn't set, link was hidden. See 'if' attribute in the template."
 ></snappy-cloner>
 ```
 
