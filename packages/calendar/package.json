@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/calendar",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A Google Calendar element that's easy to use and customize. 1kb (brotli)",
 	"type": "module",
 	"main": "snappy-calendar-min.js",
