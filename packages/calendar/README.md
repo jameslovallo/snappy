@@ -1,6 +1,6 @@
 # &lt;snappy-calendar&gt;
 
-A Google Calendar element that's easy to use and customize. 1kb (brotli).
+A Google Calendar element that's easy to use and customize. 1.7kb (brotli).
 
 [Demo](https://codepen.io/kaina/pen/MWQmPQX?editors=0010)
 
@@ -43,12 +43,12 @@ Option 2: In your markup.
 
 ```html
 <snappy-calendar
-  calendar="your google calendar id"
-  key="your google calendar api key"
-  format="accepts 'grid' or 'list' (defaults to responsive)"
-  locale="any locale string ('en', 'fr', etc, defaults to navigator.language)"
-  prev-aria-label="any string (defaults to 'show previous month')"
-  next-aria-label="any string (defaults to 'show next month')"
+	calendar="your google calendar id"
+	key="your google calendar api key"
+	format="accepts 'grid' or 'list' (defaults to responsive)"
+	locale="any locale string ('en', 'fr', etc, defaults to navigator.language)"
+	prev-aria-label="any string (defaults to 'show previous month')"
+	next-aria-label="any string (defaults to 'show next month')"
 ></snappy-calendar>
 ```
 
@@ -90,16 +90,16 @@ The following parts are available, and should be fairly self-explanatory.
 
 ```scss
 snappy-carousel {
-  &::part(header) {
-    background: #eee;
-  }
-  &[format='list'] {
-    &::part(day) {
-      margin-bottom: 1rem;
-    }
-    &::part(event-name) {
-      color: #222;
-    }
-  }
+	&::part(header) {
+		background: #eee;
+	}
+	&[format='list'] {
+		&::part(day) {
+			margin-bottom: 1rem;
+		}
+		&::part(event-name) {
+			color: #222;
+		}
+	}
 }
 ```
