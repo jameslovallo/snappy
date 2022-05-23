@@ -1,15 +1,16 @@
 {
-	"name": "@snappywc/md",
-	"version": "1.0.3",
-	"description": "The little markdown element that can.",
+	"name": "@snappywc/calendar",
+	"version": "1.0.1",
+	"description": "A Google Calendar element that's easy to use and customize. 1kb (brotli)",
 	"type": "module",
-	"main": "dist/snappy-md-bundle.js",
-	"module": "dist/snappy-md-bundle.js",
+	"main": "snappy-calendar-min.js",
+	"module": "snappy-calendar-min.js",
 	"keywords": [
 		"snappy",
-		"md",
-		"markdown",
-		"render",
+		"calendar",
+		"google calendar",
+		"fullcalendar",
+		"css grid",
 		"web component",
 		"web components",
 		"custom element",
@@ -38,12 +39,7 @@
 	"bugs": {
 		"url": "https://github.com/kaina-agency/snappy/issues"
 	},
-	"dependencies": {
-		"esbuild": "^0.14.39",
-		"marked": "^4.0.15"
-	},
 	"scripts": {
-		"build": "esbuild snappy-md.js --bundle --format=esm --minify --tree-shaking=true --outfile=dist/snappy-md-bundle.js",
 		"publish": "npm version patch && npm publish"
 	}
 }

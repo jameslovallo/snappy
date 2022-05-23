@@ -39,5 +39,8 @@
 	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
 	"bugs": {
 		"url": "https://github.com/kaina-agency/snappy/issues"
+	},
+	"scripts": {
+		"publish": "npm version patch && npm publish"
 	}
 }
