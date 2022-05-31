@@ -1,0 +1,44 @@
+{
+	"name": "clone-trooper",
+	"version": "1.0.1",
+	"description": "A custom element that clones <template>s to create components on-the-fly.",
+	"type": "module",
+	"main": "clone-trooper-min.js",
+	"module": "clone-trooper-min.js",
+	"keywords": [
+		"clone",
+		"reusable",
+		"template",
+		"templating",
+		"web component",
+		"web components",
+		"custom element",
+		"custom elements",
+		"react",
+		"vue",
+		"svelte",
+		"vanilla",
+		"small",
+		"fast",
+		"flexible",
+		"customizable",
+		"accessible",
+		"accessibility",
+		"slot",
+		"slots",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	},
+	"scripts": {
+		"publish": "npm version patch && npm publish"
+	}
+}
