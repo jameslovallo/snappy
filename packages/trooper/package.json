@@ -39,6 +39,6 @@
 		"url": "https://github.com/kaina-agency/snappy/issues"
 	},
 	"scripts": {
-		"publish": "npm version patch && npm publish"
+		"update": "npm version patch && npm publish"
 	}
 }

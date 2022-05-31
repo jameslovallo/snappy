@@ -44,6 +44,6 @@
 	},
 	"scripts": {
 		"build": "esbuild snappy-md.js --bundle --format=esm --minify --tree-shaking=true --outfile=dist/snappy-md-bundle.js",
-		"publish": "npm version patch && npm publish"
+		"update": "npm version patch && npm publish"
 	}
 }
