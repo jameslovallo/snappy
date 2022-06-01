@@ -56,7 +56,7 @@ Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poab
 
 ```html
 <script type="module">
-  import '//unpkg.com/@snappywc/cloner'
+  import '//unpkg.com/clone-trooper'
 </script>
 
 <template
@@ -110,19 +110,6 @@ Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poab
   role="Chief Operations Officer"
   email="#"
   photo="https://bit.ly/3sv2Kts"
-></clone-trooper>
-
-<clone-trooper
-  template="staff"
-  name="Default values!"
-  role="Photo prop wasn't set, falls back to template default."
-  email="#"
-></clone-trooper>
-
-<clone-trooper
-  template="staff"
-  name="Conditional rendering!"
-  role="Email prop wasn't set, link was hidden. See 'if' attribute in the template."
 ></clone-trooper>
 ```
 
