@@ -1,7 +1,7 @@
 {
 	"name": "@snappywc/carousel",
-	"version": "1.0.26",
-	"description": "A snappy, customizable web component that works anywhere!",
+	"version": "1.0.27",
+	"description": "A tiny, customizable, and accessible carousel that works anywhere!",
 	"type": "module",
 	"main": "snappy-carousel-min.js",
 	"module": "snappy-carousel-min.js",

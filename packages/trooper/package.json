@@ -1,7 +1,7 @@
 {
 	"name": "clone-trooper",
-	"version": "1.0.3",
-	"description": "A custom element that clones <template>s to create components on-the-fly.",
+	"version": "1.0.4",
+	"description": "A custom element that clones templates to create components on-the-fly.",
 	"type": "module",
 	"main": "clone-trooper-min.js",
 	"module": "clone-trooper-min.js",
