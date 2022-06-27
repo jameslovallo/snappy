@@ -142,7 +142,7 @@ export default (() => {
 				}
 
 				static get observedAttributes() {
-					return ['calendar, key, locale']
+					return ['calendar', 'key', 'locale']
 				}
 
 				attributeChangedCallback() {
