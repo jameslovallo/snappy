@@ -1,6 +1,6 @@
 # &lt;snappy-typer&gt;
 
-A typing element that's easy to use and customize. 0.5kb (brotli).
+A typing element that's easy to use and customize. 0.73kb (brotli).
 
 [Demo](https://codepen.io/kaina/pen/oNqeXrW)
 
