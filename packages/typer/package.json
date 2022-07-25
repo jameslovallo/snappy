@@ -1,0 +1,40 @@
+{
+	"name": "@snappywc/typer",
+	"version": "1.0.0",
+	"description": "A very lightweight typing custom element. .5kb (brotli)",
+	"type": "module",
+	"main": "snappy-typer-min.js",
+	"module": "snappy-typer-min.js",
+	"keywords": [
+		"snappy",
+		"typer",
+		"typed",
+		"typing effect",
+		"web component",
+		"web components",
+		"custom element",
+		"custom elements",
+		"react",
+		"vue",
+		"svelte",
+		"vanilla",
+		"small",
+		"fast",
+		"flexible",
+		"customizable",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kaina-agency/snappy.git"
+	},
+	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/kaina-agency/snappy/issues"
+	},
+	"scripts": {
+		"update": "npm version patch && npm publish"
+	}
+}
