@@ -26,7 +26,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-  import '//unpkg.com/@snappywc/typer'
+	import '//unpkg.com/@snappywc/typer'
 </script>
 ```
 
@@ -34,11 +34,11 @@ Option 2: In your markup.
 
 ```html
 <snappy-typer
-  base-string="Making our neighborhoods stronger through"
-  typed-strings="diversity,equity,inclusion"
-  typing-speed="120"
-  word-delay="5000"
-  next-delay="200"
+	static="Making our neighborhoods stronger through"
+	strings="diversity,equity,inclusion"
+	typing-speed="120"
+	word-delay="5000"
+	next-delay="200"
 ></snappy-typer>
 ```
 
@@ -48,15 +48,26 @@ The default styles and part selectors for this element were carefully considered
 
 ### Parts
 
-The following parts are available, and should be fairly self-explanatory.
+The following parts are available for styling.
 
-- base (the static portion of the string)
-- typed (the typed portion of the string)
+- static (the static text)
+- typed (the dynamic text)
 
 Example Use
 
 ```css
 snappy-typer::part(typed) {
-  font-style: italic;
+	font-style: italic;
 }
+```
+
+### CSS Variables
+
+The variables below can be used to customize the caret at the end of the typed text.
+
+```css
+  snappy-typer {
+    --caret: '|';
+    --caret-color: currentcolor;
+  }
 ```

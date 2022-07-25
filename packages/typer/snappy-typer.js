@@ -8,21 +8,22 @@ export default (() => {
 					super()
 					this.sr = this.attachShadow({ mode: 'open' })
 					// get attributes
-					this.baseString = this.getAttribute('base-string')
-					this.typedStrings = this.getAttribute('typed-strings').split(',')
+					this.static = this.getAttribute('static')
+					this.strings = this.getAttribute('strings').split(',')
 					this.typingSpeed = Number(this.getAttribute('typing-speed')) || 120
 					this.wordDelay = Number(this.getAttribute('word-delay')) || 5000
 					this.nextDelay = Number(this.getAttribute('next-delay')) || 500
 					// setup template
 					this.sr.innerHTML = `
-					<span part="base">${this.baseString}</span>
+					<span part="static">${this.static || ''}</span>
 					<span part="typed" class="typing"></span>
 					
 					<style>
 						:host { display: block }
 						
 						[part="typed"]:after {
-							content: '|';
+							content: var(--caret, '|');
+							color: var(--caret-color, currentcolor);
 							font-weight: 100;
 						}
 						
@@ -44,7 +45,7 @@ export default (() => {
 
 					const typer = () => {
 						// get current string
-						const word = this.typedStrings[currentString].trim()
+						const word = this.strings[currentString].trim()
 						// add letters with delay
 						for (let i = 0; i < word.length; i++) {
 							setTimeout(() => {
@@ -63,7 +64,7 @@ export default (() => {
 								if (this.typed.innerText === '') {
 									this.typed.dataset.typing = false
 									// advance to next word or reset state to 0
-									if (currentString < this.typedStrings.length - 1) {
+									if (currentString < this.strings.length - 1) {
 										currentString++
 									} else currentString = 0
 									setTimeout(typer, this.nextDelay) // run it again
@@ -72,7 +73,7 @@ export default (() => {
 						}
 					}
 
-					typer(this.typedStrings[0])
+					typer(this.strings[0])
 				}
 			}
 		)
