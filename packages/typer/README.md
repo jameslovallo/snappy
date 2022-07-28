@@ -2,9 +2,9 @@
 
 A typing element that's easy to use and customize. 0.73kb (brotli).
 
-[Demo](https://codepen.io/kaina/pen/oNqeXrW)
+[Demo](https://codepen.io/jameslovallo/pen/oNqeXrW)
 
-![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-typer.gif?raw=true)
+![](https://github.com/jameslovallo/snappy/blob/main/screenshots/snappy-typer.gif?raw=true)
 
 ## Why Make Another Typer Element?
 

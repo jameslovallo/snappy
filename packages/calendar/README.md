@@ -2,9 +2,9 @@
 
 A Google Calendar element that's easy to use and customize. 1.7kb (brotli).
 
-[Demo](https://codepen.io/kaina/pen/MWQmPQX?editors=0010)
+[Demo](https://codepen.io/jameslovallo/pen/MWQmPQX?editors=0010)
 
-![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-calendar.png?raw=true)
+![](https://github.com/jameslovallo/snappy/blob/main/screenshots/snappy-calendar.png?raw=true)
 
 ## Why Make Another Calendar Element?
 

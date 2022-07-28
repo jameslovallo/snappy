@@ -2,7 +2,7 @@
 
 A custom element to create little components on-the-fly. **< 500 bytes** (brotli).
 
-[Demo](https://codepen.io/kaina/pen/poabbbw?editors=0010)
+[Demo](https://codepen.io/jameslovallo/pen/poabbbw?editors=0010)
 
 ## Use Cases
 
@@ -39,9 +39,9 @@ Option 2: In your markup.
 
 ## Basic Usage
 
-Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poabbbw?editors=0010).
+Let's create these staff cards from the [demo](https://codepen.io/jameslovallo/pen/poabbbw?editors=0010).
 
-![](https://raw.githubusercontent.com/kaina-agency/snappy/main/screenshots/snappy-cloner.png)
+![](https://raw.githubusercontent.com/jameslovallo/snappy/main/screenshots/snappy-cloner.png)
 
 1. Create a `template` with a unique ID, like this: `<template id="staff">`
 2. Add a `props` attribute and add some prop names, like this: `props="name role photo email"`

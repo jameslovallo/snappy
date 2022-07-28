@@ -32,11 +32,11 @@
 	"license": "ISC",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kaina-agency/snappy.git"
+		"url": "git+https://github.com/jameslovallo/snappy.git"
 	},
-	"homepage": "https://github.com/kaina-agency/snappy/tree/main/packages/carousel#readme",
+	"homepage": "https://github.com/jameslovallo/snappy/tree/main/packages/carousel#readme",
 	"bugs": {
-		"url": "https://github.com/kaina-agency/snappy/issues"
+		"url": "https://github.com/jameslovallo/snappy/issues"
 	},
 	"dependencies": {
 		"esbuild": "^0.14.39",

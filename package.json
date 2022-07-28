@@ -2,7 +2,7 @@
 	"description": "Snappy and customizable web components that work everywhere!",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kaina-agency/snappy.git"
+		"url": "git+https://github.com/jameslovallo/snappy.git"
 	},
-	"homepage": "https://github.com/kaina-agency/snappy#readme"
+	"homepage": "https://github.com/jameslovallo/snappy#readme"
 }

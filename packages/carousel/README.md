@@ -5,7 +5,7 @@ The tiny, no-nonsense carousel that works anywhere.
 
 [Demo with Vanilla, React and Vue examples](https://codepen.io/kaicna/pen/PoErQyv)
 
-![](https://github.com/kaina-agency/snappy/blob/main/screenshots/snappy-carousel.png?raw=true)
+![](https://github.com/jameslovallo/snappy/blob/main/screenshots/snappy-carousel.png?raw=true)
 
 ## Installation
 

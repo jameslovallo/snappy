@@ -2,7 +2,7 @@
 
 A custom element that clones `<template>`s to create components on-the-fly. 0.5kb (brotli).
 
-[Demo](https://codepen.io/kaina/pen/poabbbw?editors=0010)
+[Demo](https://codepen.io/jameslovallo/pen/poabbbw?editors=0010)
 
 ## Features
 
@@ -39,9 +39,9 @@ Option 2: In your markup.
 
 ## Basic Usage
 
-Let's create these staff cards from the [demo](https://codepen.io/kaina/pen/poabbbw?editors=0010).
+Let's create these staff cards from the [demo](https://codepen.io/jameslovallo/pen/poabbbw?editors=0010).
 
-![](https://github.com/kaina-agency/snappy/blob/main/screenshots/clone-trooper.png?raw=true)
+![](https://github.com/jameslovallo/snappy/blob/main/screenshots/clone-trooper.png?raw=true)
 
 1. Create a `template` with a unique ID, like this: `<template id="staff">`
 2. Add a `props` attribute and add some prop names, like this: `props="name role photo email"`

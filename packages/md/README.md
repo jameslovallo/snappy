@@ -2,7 +2,7 @@
 
 The little markdown element that can.
 
-[Demo](https://codepen.io/kaina/pen/poayWyg)
+[Demo](https://codepen.io/jameslovallo/pen/poayWyg)
 
 ## Features
 
@@ -36,7 +36,7 @@ import '@snappywc/md'
 ### Render a Remote File
 
 ```html
-<snappy-md src="https://raw.githubusercontent.com/kaina-agency/snappy/main/packages/carousel/README.md"></snappy-md>
+<snappy-md src="https://raw.githubusercontent.com/jameslovallo/snappy/main/packages/carousel/README.md"></snappy-md>
 ```
 
 ### Render Inline Markdown
