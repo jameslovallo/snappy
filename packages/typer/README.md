@@ -35,7 +35,7 @@ Option 2: In your markup.
 ```html
 <snappy-typer
 	static="Making our neighborhoods stronger through"
-	strings="diversity,equity,inclusion"
+	typed="diversity,equity,inclusion"
 	typing-speed="120"
 	word-delay="5000"
 	next-delay="200"
@@ -57,7 +57,7 @@ Example Use
 
 ```css
 snappy-typer::part(typed) {
-	font-style: italic;
+	color: red;
 }
 ```
 
