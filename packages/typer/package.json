@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/typer",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "A very lightweight typing element. .73kb (brotli)",
 	"type": "module",
 	"main": "snappy-typer-min.js",
