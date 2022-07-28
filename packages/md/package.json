@@ -3,8 +3,8 @@
 	"version": "1.0.4",
 	"description": "The little markdown element that can.",
 	"type": "module",
-	"main": "dist/snappy-md-bundle.js",
-	"module": "dist/snappy-md-bundle.js",
+	"main": "snappy-md-bundle.js",
+	"module": "snappy-md-bundle.js",
 	"keywords": [
 		"snappy",
 		"md",
@@ -43,7 +43,7 @@
 		"marked": "^4.0.15"
 	},
 	"scripts": {
-		"build": "esbuild snappy-md.js --bundle --format=esm --minify --tree-shaking=true --outfile=dist/snappy-md-bundle.js",
+		"build": "esbuild snappy-md.js --bundle --format=esm --minify --tree-shaking=true --outfile=snappy-md-bundle.js",
 		"update": "npm version patch && npm publish"
 	}
 }
