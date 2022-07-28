@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/md",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "The little markdown element that can.",
 	"type": "module",
 	"main": "snappy-md-bundle.js",
