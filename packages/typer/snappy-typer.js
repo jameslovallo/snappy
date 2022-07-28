@@ -1,21 +1,21 @@
 export default (() => {
-	!customElements.get("snappy-typer") &&
+	!customElements.get('snappy-typer') &&
 		customElements.define(
-			"snappy-typer",
+			'snappy-typer',
 			class extends HTMLElement {
 				constructor() {
 					// boilerplate
-					super();
-					this.sr = this.attachShadow({ mode: "open" });
+					super()
+					this.sr = this.attachShadow({ mode: 'open' })
 					// get attributes
-					this.static = this.getAttribute("static");
-					this.strings = this.getAttribute("strings").split(",");
-					this.typingSpeed = Number(this.getAttribute("typing-speed")) || 120;
-					this.wordDelay = Number(this.getAttribute("word-delay")) || 5000;
-					this.nextDelay = Number(this.getAttribute("next-delay")) || 0;
+					this.static = this.getAttribute('static')
+					this.strings = this.getAttribute('strings').split(',')
+					this.typingSpeed = Number(this.getAttribute('typing-speed')) || 120
+					this.wordDelay = Number(this.getAttribute('word-delay')) || 5000
+					this.nextDelay = Number(this.getAttribute('next-delay')) || 0
 					// setup template
 					this.sr.innerHTML = `
-					<span part="static">${this.static || ""}</span>
+					<span part="static">${this.static || ''}</span>
 					<span part="typed" class="typing"></span>
 					
 					<style>
@@ -36,46 +36,46 @@ export default (() => {
 							51% { opacity: 0 } 100% { opacity: 0 }
 						}
 					</style>
-				`;
-					this.typed = this.sr.querySelector("[part=typed]");
+				`
+					this.typed = this.sr.querySelector('[part=typed]')
 				}
 
 				connectedCallback() {
-					let currentString = 0; // "state"
+					let currentString = 0 // "state"
 
 					const typer = () => {
 						// get current string
-						const word = this.strings[currentString].trim();
-						const wordDelay = this.wordDelay + word.length * this.typingSpeed;
+						const word = this.strings[currentString].trim()
+						const wordDelay = this.wordDelay + word.length * this.typingSpeed
 						// add letters with delay
 						for (let i = 0; i < word.length; i++) {
 							setTimeout(() => {
-								this.typed.dataset.typing = true;
-								this.typed.innerText += word[i];
+								this.typed.dataset.typing = true
+								this.typed.innerText += word[i]
 								if (this.typed.innerText === word) {
-									this.typed.dataset.typing = false;
+									this.typed.dataset.typing = false
 								}
-							}, i * this.typingSpeed); // delay
+							}, i * this.typingSpeed) // delay
 						}
 						// remove letters with delay
 						for (let i = 0; i < word.length; i++) {
 							setTimeout(() => {
-								this.typed.dataset.typing = true;
-								this.typed.innerText = this.typed.innerText.slice(0, -1);
-								if (this.typed.innerText === "") {
-									this.typed.dataset.typing = false;
+								this.typed.dataset.typing = true
+								this.typed.innerText = this.typed.innerText.slice(0, -1)
+								if (this.typed.innerText === '') {
+									this.typed.dataset.typing = false
 									// advance to next word or reset state to 0
 									if (currentString < this.strings.length - 1) {
-										currentString++;
-									} else currentString = 0;
-									setTimeout(typer, this.nextDelay); // run it again
+										currentString++
+									} else currentString = 0
+									setTimeout(typer, this.nextDelay) // run it again
 								}
-							}, wordDelay + i * this.typingSpeed); // delay
+							}, wordDelay + i * this.typingSpeed) // delay
 						}
-					};
+					}
 
-					typer(this.strings[0]);
+					typer(this.strings[0])
 				}
 			}
-		);
-})();
+		)
+})()
