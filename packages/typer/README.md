@@ -26,7 +26,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-	import '//unpkg.com/@snappywc/typer'
+  import '//unpkg.com/@snappywc/typer'
 </script>
 ```
 
@@ -34,11 +34,11 @@ Option 2: In your markup.
 
 ```html
 <snappy-typer
-	static="Making our neighborhoods stronger through"
-	typed="diversity,equity,inclusion"
-	typing-speed="120"
-	word-delay="5000"
-	next-delay="200"
+  static="Making our neighborhoods stronger through"
+  typed="diversity,equity,inclusion"
+  typing-speed="120"
+  word-delay="5000"
+  next-delay="200"
 ></snappy-typer>
 ```
 
@@ -57,7 +57,7 @@ Example Use
 
 ```css
 snappy-typer::part(typed) {
-	color: red;
+  color: red;
 }
 ```
 
@@ -66,8 +66,8 @@ snappy-typer::part(typed) {
 The variables below can be used to customize the caret at the end of the typed text.
 
 ```css
-  snappy-typer {
-    --caret: '|';
-    --caret-color: currentcolor;
-  }
+snappy-typer {
+  --caret: '|';
+  --caret-color: currentcolor;
+}
 ```
