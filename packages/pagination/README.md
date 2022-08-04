@@ -37,15 +37,14 @@ Option 2: In your markup.
 ></snappy-pagination>
 <!-- for demo -->
 <div class="images"></div>
-```
 
-### Javscript
-```js
-// 1. query your <snappy-pagination> element
+<script type="module">
+import "//unpkg.com/@snappywc/pagination";
+
+/* 1. Query your <snappy-pagination> element. */
 const pagination = document.querySelector("snappy-pagination");
 
-// 2. create your function that will run when the page changes
-//    use the element's ".page" property to reference the current page 
+/* 2. Create a function that will run when the page changes. Inside your function, use the element's ".page" property to reference the current page. */
 const fetchPage = () => {
   fetch(`https://picsum.photos/v2/list?page=${pagination.page}&limit=20`)
     .then((res) => res.json())
@@ -58,12 +57,13 @@ const fetchPage = () => {
         })
         .join("");
     });
+
+/* 3. At the end of your function, pass your function to the ".handlePages" method. */
+  pagination.handlePages(fetchPage);
 };
 
-// 3. pass your function into the ".handlePages" method
-pagination.handlePages(fetchPage);
-
 fetchPage();
+</script>
 ```
 
 ## Customization
