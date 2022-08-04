@@ -42,6 +42,7 @@ export default (() => {
 							justify-content: center;
 							padding: .5rem;
 							color: inherit;
+							font: inherit;
 						}
 						[part=current-page] { font-weight: bold }
 						::slotted(svg) {
