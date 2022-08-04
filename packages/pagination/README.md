@@ -35,6 +35,8 @@ Option 2: In your markup.
   range="2 (pages to show left/right of current page, defaults to 2)"
   total="50 (total number of pages, which can be set via js)"
 ></snappy-pagination>
+<!-- for demo -->
+<div class="images"></div>
 ```
 
 ### Javscript
