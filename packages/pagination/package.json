@@ -1,7 +1,7 @@
 {
 	"name": "@snappywc/pagination",
-	"version": "1.0.0",
-	"description": "An easy-to use pagination element.",
+	"version": "1.0.1",
+	"description": "An easy-to use pagination element (0.8kb)",
 	"type": "module",
 	"main": "snappy-pagination-min.js",
 	"module": "snappy-pagination-min.js",
