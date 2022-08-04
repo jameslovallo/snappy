@@ -91,8 +91,8 @@ snappy-pagination::part(page) {
 
 The following slots are available to customize the element's markup.
 
-- prev (each numbered page button's content)
-- next (the current page's button's content)
+- prev (the previous button's content)
+- next (the next button's content)
 
 Example Use
 
