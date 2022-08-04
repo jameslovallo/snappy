@@ -29,22 +29,31 @@ Option 2: In your markup.
 ## Usage
 
 ### HTML
+
+1. Add the element to your markup with the desired parameters.
+
 ```html
 <snappy-pagination
   page="1 (defaults to 1)"
   range="2 (pages to show left/right of current page, defaults to 2)"
   total="50 (total number of pages, which can be set via js)"
 ></snappy-pagination>
+
 <!-- for demo -->
 <div class="images"></div>
+```
 
-<script type="module">
-import "//unpkg.com/@snappywc/pagination";
+### Javascript
 
-/* 1. Query your <snappy-pagination> element. */
+1. Query your &lt;snappy-pagination&gt; element.
+2. Create a function that will run when the page changes. Inside your function, use the element's `.page` property to reference the current page.
+3. At the end of your function, pass your function to the `.handlePages` method.
+
+```js
+// 1.
 const pagination = document.querySelector("snappy-pagination");
 
-/* 2. Create a function that will run when the page changes. Inside your function, use the element's ".page" property to reference the current page. */
+// 2.
 const fetchPage = () => {
   fetch(`https://picsum.photos/v2/list?page=${pagination.page}&limit=20`)
     .then((res) => res.json())
@@ -58,12 +67,11 @@ const fetchPage = () => {
         .join("");
     });
 
-/* 3. At the end of your function, pass your function to the ".handlePages" method. */
+  // 3.
   pagination.handlePages(fetchPage);
 };
 
 fetchPage();
-</script>
 ```
 
 ## Customization
