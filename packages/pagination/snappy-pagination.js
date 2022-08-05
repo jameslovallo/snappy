@@ -1,7 +1,7 @@
 export default (() => {
-	!customElements.get("snappy-pagination") &&
-	// prettier-ignore
-	customElements.define("snappy-pagination", class extends HTMLElement {
+	!customElements.get('snappy-pagination') &&
+		// prettier-ignore
+		customElements.define("snappy-pagination", class extends HTMLElement {
 			constructor() {
 				super();
 				this.sr = this.attachShadow({ mode: "open" });
@@ -51,13 +51,13 @@ export default (() => {
 							width: 1.5rem;
 						}
 					</style>
-					<button part="prev"><slot name="prev">🠈</slot></button>
+					<button part="prev"><slot name="prev">❮</slot></button>
 					<div part="wrapper">
 						${rangeStart >= 2 ? firstPage : ""}
 						${pages}
 						${this.page < this.total - this.range ? lastPage : ""}
 					</div>
-					<button part="next"><slot name="next">🠊</slot></button>
+					<button part="next"><slot name="next">❯</slot></button>
 				`;
 
 				const prev = this.sr.querySelector("[part=prev]");
@@ -81,5 +81,5 @@ export default (() => {
 				});
 			}
 		}
-	);
+	)
 })()
