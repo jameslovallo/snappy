@@ -41,7 +41,7 @@ Option 2: In your markup.
 const fetchPhotos = (page) => {
   fetch(`https://picsum.photos/v2/list?page=${page}&limit=20`)
     .then((res) => res.json())
-    .then((photos) => renderPhotos());
+    .then((photos) => renderPhotos(photos));
 };
 
 // 2: Query your <snappy-pagination> element.
