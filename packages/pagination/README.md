@@ -30,48 +30,33 @@ Option 2: In your markup.
 
 ### HTML
 
-1. Add the element to your markup with the desired parameters.
-
 ```html
-<snappy-pagination
-  page="1 (defaults to 1)"
-  range="2 (pages to show left/right of current page, defaults to 2)"
-  total="50 (total number of pages, which can be set via js)"
-></snappy-pagination>
-
-<!-- for demo -->
-<div class="images"></div>
+<snappy-pagination></snappy-pagination>
 ```
 
-### Javascript
-
-1. Query your &lt;snappy-pagination&gt; element.
-2. Create a function that will run when the page changes. Inside your function, use the element's `.page` property to reference the current page.
-3. At the end of your function, pass your function to the `.handlePages` method.
+### JavaScript
 
 ```js
-// 1.
-const pagination = document.querySelector("snappy-pagination");
-
-// 2.
-const fetchPage = () => {
-  fetch(`https://picsum.photos/v2/list?page=${pagination.page}&limit=20`)
+// 1: Create a function that will run when the page changes.
+const fetchPhotos = (page) => {
+  fetch(`https://picsum.photos/v2/list?page=${page}&limit=20`)
     .then((res) => res.json())
-    .then((photos) => {
-      document.querySelector(".images").innerHTML = photos
-        .map((p) => {
-          const u = p.download_url.split("/");
-          const url = `//${u[2]}/${u[3]}/${u[4]}/300/200.webp`;
-          return `<img src="${url}">`;
-        })
-        .join("");
-    });
-
-  // 3.
-  pagination.handlePages(fetchPage);
+    .then((photos) => renderPhotos());
 };
 
-fetchPage();
+// 2: Query your <snappy-pagination> element.
+const pagination = document.querySelector("snappy-pagination");
+
+// 3: Run the setup function with the desired options
+pagination.setup({total: 50})
+
+// 4: Listen for the component's `page-changed` event
+pagination.addEventListener("page-changed", (e) => {
+  // 4.1 pass e.detail.page to your function
+  fetchPhotos(e.detail.page);
+});
+
+fetchPhotos(1);
 ```
 
 ## Customization
@@ -82,16 +67,19 @@ The default styles and part selectors for this element were carefully considered
 
 The following parts are available for styling.
 
-- page (each numbered page button)
-- current-page (the current page's button)
-- prev (the previous page button)
-- next (the next page button)
+| name | description |
+| - | - |
+| page | each numbered page button |
+| current-page | the current page's button |
+| prev | the previous page button |
+| next | the next page button |
 
-Example Use
+**Example Use**
 
 ```css
 snappy-pagination::part(page) {
   color: red;
+  font-weight: bold;
 }
 ```
 
@@ -99,10 +87,13 @@ snappy-pagination::part(page) {
 
 The following slots are available to customize the element's markup.
 
-- prev (the previous button's content)
-- next (the next button's content)
+| name | description | default |
+| - | - | - |
+| prev | the previous button's content | ❮ |
+| next | the next button's content | ❯ |
+| ellipsis | shown between pages | ... |
 
-Example Use
+**Example Use**
 
 ```html
 <snappy-pagination total="50" range="2">
