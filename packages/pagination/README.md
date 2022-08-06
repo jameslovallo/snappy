@@ -50,7 +50,7 @@ const pagination = document.querySelector("snappy-pagination");
 // 3: Run the setup function with the desired options
 pagination.setup({
   total: 50, // Number of pages available
-  spread: 50 // Number of pages to show left/right of current page
+  spread: 2, // Number of pages to show left/right of current page
 })
 
 // 4: Listen for the component's `page-changed` event
