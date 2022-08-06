@@ -1,6 +1,6 @@
 # &lt;snappy-pagination&gt;
 
-An easy-to use pagination element. (0.8 kb)
+An easy-to use pagination element. (1 kb)
 
 [Demo](https://codepen.io/jameslovallo/pen/bGvvxYK)
 
