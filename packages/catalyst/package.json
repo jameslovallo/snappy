@@ -1,0 +1,34 @@
+{
+	"name": "catalyst",
+	"version": "1.0.0",
+	"description": "An Options API for Scaffolding Custom Elements",
+	"type": "module",
+	"main": "catalyst-min.js",
+	"module": "catalyst-min.js",
+	"keywords": [
+		"snappy",
+		"web component",
+		"web components",
+		"custom element",
+		"custom elements",
+		"vue",
+		"options api",
+		"small",
+		"fast",
+		"flexible",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jameslovallo/snappy.git"
+	},
+	"homepage": "https://github.com/jameslovallo/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/jameslovallo/snappy/issues"
+	},
+	"scripts": {
+		"update": "npm version patch && npm publish"
+	}
+}
