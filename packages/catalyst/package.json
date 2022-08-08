@@ -1,6 +1,6 @@
 {
-	"name": "catalyst",
-	"version": "1.0.0",
+	"name": "@snappywc/catalyst",
+	"version": "1.0.1",
 	"description": "An Options API for Scaffolding Custom Elements",
 	"type": "module",
 	"main": "catalyst-min.js",
