@@ -1,4 +1,4 @@
-export default function catalyst(c) {
+export default (c) => {
 	class el extends HTMLElement {
 		constructor() {
 			super()

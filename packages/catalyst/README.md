@@ -11,18 +11,18 @@ Catalyst was inspired by the Vue 2 Single File Components and the Options API. I
 Option 1: As a package.
 
 ```sh
-npm i catalyst
+npm i @snappywc/catalyst
 ```
 
 ```js
-import 'catalyst'
+import '@snappywc/catalyst'
 ```
 
 Option 2: In your markup.
 
 ```html
 <script type="module">
-  import '//unpkg.com/catalyst'
+  import '//unpkg.com/@snappywc/catalyst'
 </script>
 ```
 
@@ -43,10 +43,10 @@ catalyst({
 
   shadow: true,
 
-  /*
-    Define props and assignment handlers.
-    Handler functions are primitives or the name of a method as a string.
-    Each prop is available at this[prop name], i.e. this.photo.
+  /* Define props and assignment handlers.
+    Assignment handlers transform prop data before it is assigned. 
+    They can be primitives or the name of a method as a string.
+    Each prop is available at this[prop_name], i.e. this.photo.
     Prop definitions are available for later reference at this.props.
   */
 
@@ -60,8 +60,8 @@ catalyst({
 
   /*
     Create methods to use throughout your component.
-    Methods can be used as prop handlers or in markup, event handlers, or other methods.
-    Methods are available at this[prop name], i.e. this.phoneClick
+    Methods can be used as assignment handlers, in markup, in event handlers, or in other methods.
+    Methods are available at this[prop_name], i.e. this.phoneClick().
   */
 
   methods: {
@@ -94,11 +94,11 @@ catalyst({
   },
 
   /*
-    Define template as a function that returns a template literal.
-    @click, @mouseover, etc, can be used to assign event handles.
+    Define your template as a function that returns a template literal.
+    @click, @mouseover, @focus, @submit, etc are all available.
     You may also run arbitrary Javascript in a @ attribute in an arrow function.
-    All methods or arrow functions in a @ attribute have access to (e).
-    All parts are available at this.parts[part name], i.e. this.parts.details.
+    All @ attribute have access to (e), which can be passed to a method.
+    All parts are available at this.parts[part_name], i.e. this.parts.details.
   */
 
   template() {
@@ -116,9 +116,8 @@ catalyst({
   },
 
   /*
-    Define css as a function that returns a template literal.
+    Define your css as a function that returns a template literal.
     Only vanilla CSS is supported.
-    SASS support may be added to higher-level framework.
   */
 
   css() {
