@@ -25,10 +25,10 @@ export default (c) => {
 				})
 			}
 
-			// add css to dom
-			if (c.css) {
-				this.css = c.css
-				this.DOM.innerHTML += `<style>${this.css()}</style>`
+			// add styles to dom
+			if (c.styles) {
+				this.styles = c.styles
+				this.DOM.innerHTML += `<style>${this.styles()}</style>`
 			}
 
 			// add template to dom and set up this.parts
