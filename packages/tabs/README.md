@@ -32,7 +32,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-	import '//unpkg.com/@snappywc/tabs'
+  import '//unpkg.com/@snappywc/tabs'
 </script>
 ```
 
@@ -42,30 +42,27 @@ It's really, _really_ easy.
 
 ```html
 <snappy-tabs type="tabs">
-	<details open>
-		<!--open by default-->
-		<summary><h3>Tab 1</h3></summary>
-		<!--will be part="tab"-->
-		<div>
-			<!--will be part="panel"-->
-			<h4>Panel 1</h4>
-			<p>Panel 1 content.</p>
-		</div>
-	</details>
-	<details>
-		<summary><h3>Tab 2</h3></summary>
-		<div>
-			<h4>Panel 2</h4>
-			<p>Panel 2 content.</p>
-		</div>
-	</details>
-	<details>
-		<summary><h3>Tab 2</h3></summary>
-		<div>
-			<h4>Panel 2</h4>
-			<p>Panel 2 content.</p>
-		</div>
-	</details>
+  <details open> <!--open by default-->
+    <summary><h3>Tab 1</h3></summary> <!--will be part="tab"-->
+    <div> <!--will be part="panel"-->
+      <h4>Panel 1</h4>
+      <p>Panel 1 content.</p>
+    </div>
+  </details>
+  <details>
+    <summary><h3>Tab 2</h3></summary>
+    <div>
+      <h4>Panel 2</h4>
+      <p>Panel 2 content.</p>
+    </div>
+  </details>
+  <details>
+    <summary><h3>Tab 2</h3></summary>
+    <div>
+      <h4>Panel 2</h4>
+      <p>Panel 2 content.</p>
+    </div>
+  </details>
 </snappy-tabs>
 ```
 
