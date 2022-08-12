@@ -1,0 +1,41 @@
+{
+	"name": "@snappywc/tabs",
+	"version": "1.0.8",
+	"description": "A tab/accordion element that is customizable, lightweight, semantic, and 100% accessible. (0.85 kb)",
+	"type": "module",
+	"main": "snappy-tabs-min.js",
+	"module": "snappy-tabs-min.js",
+	"keywords": [
+		"snappy",
+		"tabs",
+		"accordion",
+		"accessible",
+		"semantic",
+		"web component",
+		"web components",
+		"custom element",
+		"custom elements",
+		"react",
+		"vue",
+		"svelte",
+		"vanilla",
+		"small",
+		"fast",
+		"flexible",
+		"customizable",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jameslovallo/snappy.git"
+	},
+	"homepage": "https://github.com/jameslovallo/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/jameslovallo/snappy/issues"
+	},
+	"scripts": {
+		"update": "npm version patch && npm publish"
+	}
+}
