@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/tabs",
-	"version": "1.0.2",
+	"version": "1.0.4",
 	"description": "A tab/accordion element that is customizable, lightweight, semantic, and 100% accessible. (0.85 kb)",
 	"type": "module",
 	"main": "snappy-tabs-min.js",
