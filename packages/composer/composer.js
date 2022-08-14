@@ -28,10 +28,13 @@ export default (c) => {
 			if (c.template) {
 				this.template = c.template
 				if (c.styles) this.styles = c.styles
-				const css = this.styles ? `<style>${this.styles}</style>` : ''
+				const css = this.styles ? `<style>${this.styles()}</style>` : ''
 				this.DOM.innerHTML = css + this.template()
 				this.parts = {}
 				this.DOM.querySelectorAll('[part]').forEach((part) => {
+					part.on = (type, callback) => {
+						part.addEventListener(type, (e) => callback(e).bind(this));
+					};
 					this.parts[part.getAttribute('part')] = part
 				})
 			}
