@@ -1,10 +1,10 @@
 {
-	"name": "@snappywc/catalyst",
-	"version": "1.0.3",
+	"name": "@snappywc/composer",
+	"version": "1.0.0",
 	"description": "An Options API for Scaffolding Custom Elements",
 	"type": "module",
-	"main": "catalyst-min.js",
-	"module": "catalyst-min.js",
+	"main": "composer-min.js",
+	"module": "composer-min.js",
 	"keywords": [
 		"snappy",
 		"web component",

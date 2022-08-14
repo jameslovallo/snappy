@@ -1,8 +1,8 @@
-# Catalyst
+# Composer
 
 An Options API for Scaffolding Custom Elements.
 
-Catalyst was inspired by the Vue 2 Single File Components and the Options API. It is tiny function that provides a familiar interface to create new custom elements.
+Composer was inspired by the Vue 2 Single File Components and the Options API. It is a tiny function that provides a succinct and familiar interface to compose new custom elements.
 
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
@@ -11,18 +11,18 @@ Catalyst was inspired by the Vue 2 Single File Components and the Options API. I
 Option 1: As a package.
 
 ```sh
-npm i @snappywc/catalyst
+npm i @snappywc/composer
 ```
 
 ```js
-import '@snappywc/catalyst'
+import '@snappywc/composer'
 ```
 
 Option 2: In your markup.
 
 ```html
 <script type="module">
-  import '//unpkg.com/@snappywc/catalyst'
+  import '//unpkg.com/@snappywc/composer'
 </script>
 ```
 
@@ -31,9 +31,9 @@ Option 2: In your markup.
 ### JavaScript
 
 ```js
-import catalyst from 'https://codepen.io/jameslovallo/pen/oNqyzmx.js'
+import composer from '//unpkg.com/@snappywc/composer'
 
-catalyst({
+composer({
   /* The name of your new element. */
 
   name: 'staff-card',
