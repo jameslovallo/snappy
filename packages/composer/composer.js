@@ -33,7 +33,8 @@ export default (c) => {
 				this.parts = {}
 				this.DOM.querySelectorAll('[part]').forEach((part) => {
 					part.on = (type, callback) => {
-						part.addEventListener(type, (e) => callback(e).bind(this));
+						callback = callback.bind(this);
+						part.addEventListener(type, (e) => callback(e));
 					};
 					this.parts[part.getAttribute('part')] = part
 				})
