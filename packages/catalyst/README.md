@@ -22,7 +22,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-	import '//unpkg.com/@snappywc/catalyst'
+  import '//unpkg.com/@snappywc/catalyst'
 </script>
 ```
 
@@ -34,71 +34,71 @@ Option 2: In your markup.
 import catalyst from 'https://codepen.io/jameslovallo/pen/oNqyzmx.js'
 
 catalyst({
-	/* The name of your new element. */
+  /* The name of your new element. */
 
-	name: 'staff-card',
+  name: 'staff-card',
 
-	/* Enable or disable Shadow DOM and slots. */
+  /* Enable or disable Shadow DOM and slots. */
 
-	shadow: true,
+  shadow: true,
 
-	/* Define props and assignment handlers.
+  /* Define props and assignment handlers.
     Assignment handlers transform prop data before it is assigned. 
     They can be primitives or the name of a method as a string.
     Each prop is available at this[prop_name], i.e. this.photo.
     Prop definitions are available for later reference at this.props.
   */
 
-	props: {
-		name: String,
-		role: String,
-		photo: String,
-		phone: 'phoneLink',
-		email: 'emailLink',
-	},
+  props: {
+    name: String,
+    role: String,
+    photo: String,
+    phone: 'phoneLink',
+    email: 'emailLink',
+  },
 
-	/*
+  /*
     Create methods to use throughout your component.
     Methods can be used as assignment handlers, in markup, in event handlers, or in other methods.
     Methods are available at this[prop_name], i.e. this.phoneClick().
   */
 
-	methods: {
-		phoneLink(phone) {
-			if (phone) {
-				const url = 'tel:' + phone.match(/[0-9]+/g).join('')
-				return `
+  methods: {
+    phoneLink(phone) {
+      if (phone) {
+        const url = 'tel:' + phone.match(/[0-9]+/g).join('')
+        return `
           <a href="tel:${url}" title="${phone}" @click="phoneClick">
             ${phoneIcon}  // inline SVG
           </a>
         `
-			} else return ''
-		},
+      } else return ''
+    },
 
-		emailLink(email) {
-			if (email) {
-				return `
+    emailLink(email) {
+      if (email) {
+        return `
           <a href="mailto:${email}" title="${email}">
             ${emailIcon} // inline SVG
           </a>
         `
-			} else return ''
-		},
+      } else return ''
+    },
 
-		phoneClick(e) {
-			e.preventDefault()
-			const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`
-			alert(message)
-		},
-	},
+    phoneClick(e) {
+      e.preventDefault()
+      const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`
+      alert(message)
+    },
+  },
 
-	/*
+  /*
     Define your template as a function that returns a template literal.
     All parts are available at this.parts[part_name], i.e. this.parts.details.
   */
 
-	template() {
-		return `
+  template() {
+    return `
       <img part="photo" src="${this.photo}">
       <div part="details">
         <b>${this.name}</b>
@@ -109,23 +109,15 @@ catalyst({
         <span part="email">${this.email}</span>
       </div>
     `
-	},
+  },
 
-	/*
-    Run code after the template is set, like assigning event listeners
-  */
-
-	ready() {
-		this.parts.phone.addEventListener('click', this.phoneClick)
-	},
-
-	/*
+  /*
     Define your styles as a function that returns a template literal.
     Only vanilla CSS is supported.
   */
 
-	styles() {
-		return `
+  styles() {
+    return `
       :host {
         display: grid;
         align-items: center;
@@ -163,6 +155,14 @@ catalyst({
         width: 24px;
       }
     `
-	},
+  },
+
+  /*
+    Run code after the template is set, like assigning event listeners
+  */
+
+  ready() {
+    this.parts.phone.addEventListener('click', this.phoneClick)
+  },
 })
 ```
