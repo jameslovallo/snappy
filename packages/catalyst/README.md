@@ -94,9 +94,6 @@ catalyst({
 
 	/*
     Define your template as a function that returns a template literal.
-    @click, @mouseover, @focus, @submit, etc are all available.
-    You may also run arbitrary Javascript in a @ attribute in an arrow function.
-    All @ attribute have access to (e), which can be passed to a method.
     All parts are available at this.parts[part_name], i.e. this.parts.details.
   */
 
@@ -108,10 +105,18 @@ catalyst({
         ${this.role}
       </div>
       <div part="contact">
-        ${this.phone}
-        ${this.email}
+        <span part="phone">${this.phone}</span>
+        <span part="email">${this.email}</span>
       </div>
     `
+	},
+
+	/*
+    Run code after the template is set, like assigning event listeners
+  */
+
+	ready() {
+		this.parts.phone.addEventListener('click', this.phoneClick)
 	},
 
 	/*

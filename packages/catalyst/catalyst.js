@@ -15,26 +15,20 @@ export default (c) => {
 			if (c.props) {
 				this.props = {}
 				Object.keys(c.props).forEach((prop) => {
-					const name = prop
-					const func = c.props[name]
-					const handler = typeof func === 'string' ? this[func] : func
-					this.props[name] = {}
-					this.props[name].value = this.getAttribute(name)
-					this.props[name].handler = handler
-					this[name] = handler(this.getAttribute(name))
+					const func = c.props[prop]
+					this.props[prop] = {
+						value: this.getAttribute(prop),
+						handler: typeof func === 'string' ? this[func] : func,
+					}
+					this.props[prop].handler = handler
+					this[prop] = handler(this.getAttribute(prop))
 				})
-			}
-
-			// add styles to dom
-			if (c.styles) {
-				this.styles = c.styles
-				this.DOM.innerHTML += `<style>${this.styles()}</style>`
 			}
 
 			// add template to dom and set up this.parts
 			if (c.template) {
 				this.template = c.template
-				this.DOM.innerHTML += this.template()
+				this.DOM.innerHTML += (c.styles || '') + this.template()
 				this.parts = {}
 				this.DOM.querySelectorAll('[part]').forEach((part) => {
 					this.parts[part.getAttribute('part')] = part
@@ -48,19 +42,6 @@ export default (c) => {
 				this.ready = c.ready
 				this.ready()
 			}
-
-			// setup @event handlers
-			this.DOM.querySelectorAll('*').forEach((el) => {
-				const events = el.getAttributeNames().filter((name) => {
-					return name.startsWith('@')
-				})
-				events.forEach((event) => {
-					const f = el.getAttribute(event)
-					el.addEventListener(event.replace('@', ''), (e) => {
-						typeof this[f] === 'function' ? this[f](e) : eval(f)
-					})
-				})
-			})
 		}
 	}
 
