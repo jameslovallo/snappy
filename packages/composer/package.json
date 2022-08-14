@@ -7,6 +7,7 @@
 	"module": "composer-min.js",
 	"keywords": [
 		"snappy",
+		"composer",
 		"web component",
 		"web components",
 		"custom element",
