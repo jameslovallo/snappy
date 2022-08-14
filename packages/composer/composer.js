@@ -20,15 +20,16 @@ export default (c) => {
 						value: this.getAttribute(prop),
 						handler: typeof func === 'string' ? this[func] : func,
 					}
-					this.props[prop].handler = handler
-					this[prop] = handler(this.getAttribute(prop))
+					this[prop] = this.props[prop].handler(this.getAttribute(prop))
 				})
 			}
 
 			// add template to dom and set up this.parts
 			if (c.template) {
 				this.template = c.template
-				this.DOM.innerHTML += (c.styles || '') + this.template()
+				if (c.styles) this.styles = c.styles
+				const css = this.styles ? `<style>${this.styles}</style>` : ''
+				this.DOM.innerHTML = css + this.template()
 				this.parts = {}
 				this.DOM.querySelectorAll('[part]').forEach((part) => {
 					this.parts[part.getAttribute('part')] = part
