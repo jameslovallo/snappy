@@ -28,75 +28,84 @@ Option 2: In your markup.
 
 ## Usage
 
-### JavaScript
+Composer allows you create custom elements using an "Options API", similar to Vue 2. Just create an object with the keys below and pass it into composer as the only parameter, i.e. `composer(myObject)`.
+
+| Key       | String   | Example                                            |
+| --------- | -------- | -------------------------------------------------- |
+| component | String   | 'staff-card'                                       |
+| shadow    | Boolean  | true                                               |
+| props     | Function | return { name: String }                            |
+| ready     | Function | this.parts.name.on('click')                        |
+| template  | Function | return \``<span part="name">${this.name}</span>`\` |
+| styles    | Function | return \``[part=name] { font-weight: bold; }`\`    |
+
+## Examples
+
+Below are examples for each of the keys in a `composer` object.
+
+- You will notice that other functions are referenced, i.e. `this.phoneLink` or `this.phoneClick`. You can add as many functions as you want to your composer object and use them as prop handlers, in your template, or in event listeners.
+
+### component
+
+The name of your new component. Must follow custom element naming convention.
 
 ```js
-import composer from '//unpkg.com/@snappywc/composer'
-
 composer({
-  /* The name of your new element. */
+  component: 'staff-card',
+})
+```
 
-  name: 'staff-card',
+### shadow
 
-  /* Enable or disable Shadow DOM and slots. */
+Whether or not to use the Shadow DOM, which allows you to use slots in your template.
 
-  shadow: true,
+```js
+composer({
+  shadow: true, // defaults to false
+})
+```
 
-  /* Define props and assignment handlers.
-    Assignment handlers transform prop data before it is assigned. 
-    They can be primitives or the name of a method as a string.
-    Each prop is available at this[prop_name], i.e. this.photo.
-    Prop definitions are available for later reference at this.props.
-  */
+### props
 
-  props: {
-    name: String,
-    role: String,
-    photo: String,
-    phone: 'phoneLink',
-    email: 'emailLink',
+Get prop data from attributes and assign it using a handler function.
+
+```js
+composer({
+  props() {
+    return {
+      name: String,
+      role: String,
+      photo: String,
+      phone: this.phoneLink,
+      email: this.emailLink,
+    }
   },
+})
+```
 
-  /*
-    Create methods to use throughout your component.
-    Methods can be used as assignment handlers, in markup, in event handlers, or in other methods.
-    Methods are available at this[prop_name], i.e. this.phoneClick().
-  */
+### ready
 
-  methods: {
-    phoneLink(phone) {
-      if (phone) {
-        const url = 'tel:' + phone.match(/[0-9]+/g).join('')
-        return `
-          <a href="tel:${url}" title="${phone}" @click="phoneClick">
-            ${phoneIcon}  // inline SVG
-          </a>
-        `
-      } else return ''
-    },
+Code to run after the template is created, i.e. assigning event listeners.
 
-    emailLink(email) {
-      if (email) {
-        return `
-          <a href="mailto:${email}" title="${email}">
-            ${emailIcon} // inline SVG
-          </a>
-        `
-      } else return ''
-    },
+- Note the `on` shorthand function to create listeners for any `part` in the template.
 
-    phoneClick(e) {
-      e.preventDefault()
-      const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`
-      alert(message)
-    },
+```js
+composer({
+  ready() {
+    this.parts.phone.on('click', this.phoneClick)
   },
+})
+```
 
-  /*
-    Define your template as a function that returns a template literal.
-    All parts are available at this.parts[part_name], i.e. this.parts.details.
-  */
+### template
 
+Return a template literal to define the template for your component.
+
+- All `part` attributes are queried and available under `this.parts`.
+- You can use `slot` elements if you chose `shadow: true`.
+
+```js
+composer({
   template() {
     return `
       <img part="photo" src="${this.photo}">
@@ -110,23 +119,25 @@ composer({
       </div>
     `
   },
+})
+```
 
-  /*
-    Define your styles as a function that returns a template literal.
-    Only vanilla CSS is supported.
-  */
+### styles
 
+Return a template literal containing your component's styles.
+
+```js
+composer({
   styles() {
     return `
       :host {
         display: grid;
         align-items: center;
         grid-template-columns: 64px 1fr auto;
-        max-width: 320px;
+        max-width:400px;
         box-shadow: inset 0 0 0 1px rgba(123, 123, 123, 0.5);
         border-radius: .75rem;
         overflow: hidden;
-        gap: .5rem;
       }
       [part=photo] {
         display: block;
@@ -139,12 +150,12 @@ composer({
       [part=details] {
         display: flex;
         flex-direction: column;
-        padding: .5rem;
+        padding: .75rem;
       }
       [part=contact] {
         display: flex;
         gap: .75rem;
-        padding: .5rem;
+        padding: .75rem;
       }
       [part="contact"] a {
         display: block;
@@ -155,14 +166,6 @@ composer({
         width: 24px;
       }
     `
-  },
-
-  /*
-    Run code after the template is set, like assigning event listeners
-  */
-
-  ready() {
-    this.parts.phone.addEventListener('click', this.phoneClick)
   },
 })
 ```
