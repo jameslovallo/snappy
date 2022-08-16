@@ -29,7 +29,7 @@ Just create an object with the keys below and pass it into composer as the only 
 | template  | Function | return \``<span part="name">${this.name}</span>`\` |
 | styles    | Function | return \``[part=name] { font-weight: bold; }`\`    |
 
-You can also add anything else to your object and access it by it's key name using `this`.
+> You can also add anything else to your object and access it by it's key name using `this`.
 
 ## Example
 Below is an example using each of the keys in a `composer` object. You can see the complete demo code [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
