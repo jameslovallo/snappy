@@ -31,7 +31,7 @@ export default (c) => {
 
 		// run ready callback
 		connectedCallback() {
-			if (this.ready) this.ready()
+			if (this?.ready) this.ready()
 		}
 	}
 
