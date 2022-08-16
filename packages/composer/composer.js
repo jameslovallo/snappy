@@ -7,15 +7,18 @@ export default (c) => {
 			Object.assign(this, c)
 
 			// get props and process values
-			this.props && Object.keys(this.props()).forEach((prop) => {
-				const func = this.props()[prop]
-				this[prop] = func(this.getAttribute(prop))
-			})
+			if (this.props) {
+				Object.keys(this.props()).forEach((prop) => {
+					const func = this.props()[prop]
+					this[prop] = func(this.getAttribute(prop))
+				})
+			}
 
 			// add template to dom and set up this.parts
 			this.DOM = this.shadow ? this.attachShadow({ mode: 'open' }) : this
 			const css = this.styles ? `<style>${this.styles()}</style>` : ''
-			this.DOM.innerHTML = css + this.template()
+			const html = this.template ? this.template() : ''
+			this.DOM.innerHTML = css + html
 			this.parts = {}
 			this.DOM.querySelectorAll('[part]').forEach((part) => {
 				part.on = (type, callback) => {
@@ -28,7 +31,7 @@ export default (c) => {
 
 		// run ready callback
 		connectedCallback() {
-			this.ready()
+			if (this.ready) this.ready()
 		}
 	}
 
