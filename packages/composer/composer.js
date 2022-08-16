@@ -3,7 +3,7 @@ export default (c) => {
 		constructor() {
 			super()
 
-			// attach methods to component
+			// attach all keys to component
 			Object.keys(c).forEach((key) => (this[key] = c[key]))
 
 			// get props and process values
