@@ -7,8 +7,7 @@ export default (c) => {
 			Object.keys(c).forEach((key) => (this[key] = c[key]))
 
 			// get props and process values
-			const props = this.props()
-			Object.keys(props).forEach((prop) => {
+			this.props && Object.keys(this.props()).forEach((prop) => {
 				const func = this.props()[prop]
 				this[prop] = func(this.getAttribute(prop))
 			})
