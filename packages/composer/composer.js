@@ -4,7 +4,7 @@ export default (c) => {
 			super()
 
 			// attach all keys to component
-			Object.keys(c).forEach((key) => (this[key] = c[key]))
+			Object.assign(this, c)
 
 			// get props and process values
 			this.props && Object.keys(this.props()).forEach((prop) => {
@@ -12,10 +12,8 @@ export default (c) => {
 				this[prop] = func(this.getAttribute(prop))
 			})
 
-			// shadow dom or no?
-			this.DOM = this.shadow ? this.attachShadow({ mode: 'open' }) : this
-
 			// add template to dom and set up this.parts
+			this.DOM = this.shadow ? this.attachShadow({ mode: 'open' }) : this
 			const css = this.styles ? `<style>${this.styles()}</style>` : ''
 			this.DOM.innerHTML = css + this.template()
 			this.parts = {}
