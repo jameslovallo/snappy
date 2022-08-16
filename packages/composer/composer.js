@@ -9,8 +9,8 @@ export default (c) => {
 			// get props and process values
 			if (this.props) {
 				Object.keys(this.props()).forEach((prop) => {
-					const func = this.props()[prop]
-					this[prop] = func(this.getAttribute(prop))
+					const handler = this.props()[prop]
+					this[prop] = handler(this.getAttribute(prop) || null)
 				})
 			}
 
