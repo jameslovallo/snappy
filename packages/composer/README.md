@@ -18,7 +18,7 @@ Option 2: In your markup.
 </script>
 ```
 ## Usage
-Composer allows you create custom elements using an "Options API", similar to Vue 2. Just create an object with the keys below and pass it into composer as the only parameter, i.e. `composer(myObject)`.
+Just create an object with the keys below and pass it into composer as the only parameter, i.e. `composer(myObject)`.
 
 | Key       | String   | Example                                            |
 | --------- | -------- | -------------------------------------------------- |
@@ -28,6 +28,8 @@ Composer allows you create custom elements using an "Options API", similar to Vu
 | ready     | Function | this.parts.name.on('click', this.phoneClick)       |
 | template  | Function | return \``<span part="name">${this.name}</span>`\` |
 | styles    | Function | return \``[part=name] { font-weight: bold; }`\`    |
+
+You can also add anything else to your object and access it by it's key name using `this`.
 
 ## Example
 Below is an example using each of the keys in a `composer` object. You can see the complete demo code [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
