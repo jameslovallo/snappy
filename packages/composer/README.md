@@ -6,6 +6,8 @@ Composer was inspired by the Vue 2 Single File Components and the Options API. I
 
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
+---
+
 ## Installation
 
 Option 1: As a package.
@@ -25,7 +27,7 @@ Option 2: In your markup.
   import '//unpkg.com/@snappywc/composer'
 </script>
 ```
-
+---
 ## Usage
 
 Composer allows you create custom elements using an "Options API", similar to Vue 2. Just create an object with the keys below and pass it into composer as the only parameter, i.e. `composer(myObject)`.
@@ -35,15 +37,15 @@ Composer allows you create custom elements using an "Options API", similar to Vu
 | component | String   | 'staff-card'                                       |
 | shadow    | Boolean  | true                                               |
 | props     | Function | return { name: String }                            |
-| ready     | Function | this.parts.name.on('click')                        |
+| ready     | Function | this.parts.name.on('click', this.phoneClick)       |
 | template  | Function | return \``<span part="name">${this.name}</span>`\` |
 | styles    | Function | return \``[part=name] { font-weight: bold; }`\`    |
+---
+## Example
 
-## Examples
+Below is an example using each of the keys in a `composer` object. You can see the complete demo code [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
 
-Below are examples for each of the keys in a `composer` object.
-
-- You will notice that other functions are referenced, i.e. `this.phoneLink` or `this.phoneClick`. You can add as many functions as you want to your composer object and use them as prop handlers, in your template, or in event listeners.
+> You will notice that other functions are referenced, i.e. `this.phoneLink` or `this.phoneClick`. You can add as many functions as you want to your composer object and use them as prop handlers, in your template, or in event listeners.
 
 ### component
 
@@ -84,11 +86,10 @@ composer({
 ```
 
 ### ready
-
 Code to run after the template is created, i.e. assigning event listeners.
+> Note the `on` shorthand function to create listeners for any `part` in the template.
 
-- Note the `on` shorthand function to create listeners for any `part` in the template.
-- When you use the `on` function, the `e` event object is forwarded for your function to use, i.e to `preventDefault()`.
+> When you use the `on` function, the `e` event object is forwarded for your function to use, i.e to `preventDefault()`.
 
 ```js
 composer({
@@ -102,8 +103,9 @@ composer({
 
 Return a template literal to define the template for your component.
 
-- All `part` attributes are queried and available under `this.parts`.
-- You can use `slot` elements if you chose `shadow: true`.
+> All `part` attributes are queried and available under `this.parts`.
+
+> You can use `slot` elements if you chose `shadow: true`.
 
 ```js
 composer({
