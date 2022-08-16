@@ -4,5 +4,11 @@
 		"type": "git",
 		"url": "git+https://github.com/jameslovallo/snappy.git"
 	},
-	"homepage": "https://github.com/jameslovallo/snappy#readme"
+	"homepage": "https://github.com/jameslovallo/snappy#readme",
+	"dependencies": {
+		"vite": "^3.0.8"
+	},
+	"scripts": {
+		"dev": "vite dev"
+	}
 }
