@@ -88,6 +88,7 @@ composer({
 Code to run after the template is created, i.e. assigning event listeners.
 
 - Note the `on` shorthand function to create listeners for any `part` in the template.
+- When you use the `on` function, the `e` event object is forwarded for your function to use, i.e to `preventDefault()`.
 
 ```js
 composer({
