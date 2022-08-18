@@ -8,13 +8,13 @@ Option 1: As a package.
 npm i @snappywc/composer
 ```
 ```js
-import '@snappywc/composer'
+import composer from '@snappywc/composer'
 ```
 
 Option 2: In your markup.
 ```html
 <script type="module">
-  import '//unpkg.com/@snappywc/composer'
+  import composer from '//unpkg.com/@snappywc/composer'
 </script>
 ```
 ## Usage
