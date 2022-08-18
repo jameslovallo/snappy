@@ -33,7 +33,7 @@ Just create an object with the keys below and pass it into composer as the only 
 
 ## Example
 Below is an example using each of the keys in a `composer` object. You can see the complete demo code [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
-> You will notice that other functions are referenced, i.e. `this.phoneLink` or `this.phoneClick`. You can add as many functions as you want to your composer object and use them as prop handlers, in your template, or in event listeners.
+> You will notice that other functions are referenced, i.e. `this.phoneLink` or `this.phoneClick`. You can add as many functions as you want to your composer object and use them as prop handlers, in your template, in your CSS, or in event listeners.
 
 ### component
 The name of your new component. Must follow custom element naming convention.
