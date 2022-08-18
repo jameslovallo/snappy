@@ -1,6 +1,6 @@
 {
 	"name": "@snappywc/composer",
-	"version": "1.0.19",
+	"version": "1.0.20",
 	"description": "An Options API for Scaffolding Custom Elements",
 	"type": "module",
 	"main": "composer-min.js",
