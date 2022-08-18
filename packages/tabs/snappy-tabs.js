@@ -15,6 +15,7 @@ export default (() => {
 					this.type = mq.matches ? "tabs" : "accordion";
 					mq.addEventListener("change", (e) => {
 						this.type = mq.matches ? "tabs" : "accordion";
+						this.setAttribute("type", this.type);
 						this.connectedCallback();
 					});
 				}
