@@ -6,14 +6,14 @@ A typing element that's easy to use and customize. 0.85kb (brotli).
 
 ## Why Make Another Tab/Accordion Element?
 
-The short answer: accessibility. This component uses only unmodified `<details>` and `<summary>` elements, which are fully semantic and accessible. It's also _tiny_.
+The short answer: accessibility. This component creates tabs and accordions using fully-semantic `<details>` and `<summary>` elements, which are very accessible. It's also _tiny_.
 
 ## Features
 
 1. Tab and Accordion views using `type="tabs"` or `type="accordion"`.
 2. Breakpoint-based view switching using `breakpoint="768px"` (provide unit and value).
 3. Floating tab indicator.
-4. Directional tab animations.
+4. Directional tab animations, respecting `prefers-reduced-motion` media query.
 5. Part selectors for easy customization.
 
 ## Installation
@@ -40,29 +40,33 @@ Option 2: In your markup.
 
 It's really, _really_ easy.
 
+| Slot  | Description                 |
+| ----- | --------------------------- |
+| tab   | The tab or accordion label. |
+| panel | The tab or accordion panel. |
+
+### Example
+
 ```html
 <snappy-tabs type="tabs">
-  <details open> <!--open by default-->
-    <summary><h3>Tab 1</h3></summary> <!--will be part="tab"-->
-    <div> <!--will be part="panel"-->
-      <h4>Panel 1</h4>
-      <p>Panel 1 content.</p>
-    </div>
-  </details>
-  <details>
-    <summary><h3>Tab 2</h3></summary>
-    <div>
-      <h4>Panel 2</h4>
-      <p>Panel 2 content.</p>
-    </div>
-  </details>
-  <details>
-    <summary><h3>Tab 2</h3></summary>
-    <div>
-      <h4>Panel 2</h4>
-      <p>Panel 2 content.</p>
-    </div>
-  </details>
+  <!-- tab 1 -->
+  <h3 slot="tab">Tab 1</h3>
+  <div slot="panel">
+    <h4>Panel 1</h4>
+    <p>Panel 1 content.</p>
+  </div>
+  <!-- tab 2 -->
+  <h3 slot="tab">Tab 2</h3>
+  <div slot="panel">
+    <h4>Panel 2</h4>
+    <p>Panel 2 content.</p>
+  </div>
+  <!-- tab 3 -->
+  <h3 slot="tab">Tab 3</h3>
+  <div slot="panel">
+    <h4>Panel 3</h4>
+    <p>Panel 3 content.</p>
+  </div>
 </snappy-tabs>
 ```
 
@@ -80,13 +84,13 @@ The following parts are available for styling.
 | panel     | The tab or accordion panel. |
 | indicator | The floating tab indicator. |
 
-Example Use
+#### Example
 
 ```css
 snappy-tabs::part(tab) {
-	text-align: center;
+  text-align: center;
 }
 snappy-tabs::part(indicator) {
-	background: darkslateblue;
+  background: darkslateblue;
 }
 ```

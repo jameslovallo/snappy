@@ -7,6 +7,7 @@ export default (() => {
 					super()
 					this.sr = this.attachShadow({ mode: 'open' })
 					this.type = this.getAttribute('type')
+					this.rm = matchMedia('prefers-reduced-motion').matches
 
 					const bp = this.getAttribute('breakpoint')
 					if (bp) {
@@ -18,7 +19,38 @@ export default (() => {
 						})
 					}
 
-					this.template = `
+					this.tabs = this.querySelectorAll('[slot=tab]')
+					this.tabs.forEach((tab, i) => {
+						tab.setAttribute('slot', 'tab-' + i)
+					})
+
+					this.panels = this.querySelectorAll('[slot=panel]')
+					this.panels.forEach((panel, i) => {
+						panel.setAttribute('slot', 'panel-' + i)
+					})
+
+					const open = (i) => {
+						if (this.type === 'tabs' && i === 0) {
+							return 'open'
+						}
+					}
+
+					const template = [...this.tabs]
+						.map((child, i) => {
+							return `
+							<details ${open(i)}>
+									<summary part="tab">
+										<slot name="tab-${i}"></slot>
+									</summary>
+									<div part="panel">
+										<slot name="panel-${i}"></slot>
+									</div>
+								</details>
+							`
+						})
+						.join('')
+
+					const css = `
 						<style>
 							:host {
 								border: 1px solid currentcolor;
@@ -27,69 +59,60 @@ export default (() => {
 								overflow: hidden;
 								position: relative;
 							}
-							details[open] summary {
+							details[open] [part=tab] {
 								border-bottom: 1px solid currentcolor;
 								font-weight: bold;
 							}
 							details:not(:last-of-type) {
 								border-bottom: 1px solid currentcolor
 							}
-							summary {
+							[part=tab] {
 								cursor: pointer;
 								box-sizing: border-box;
 								display: block;
 								padding: 1rem;
 							}
-							summary:marker { display: none }
-							summary::-webkit-details-marker { display: none }
-							summary * { font: inherit; margin: 0; }
-							summary + div { left: 0; right: 0; padding: 1rem }
-							summary + div *:first-child { margin-top: 0 }
-							summary + div *:last-child { margin-bottom: 0 }
+							[part=tab] + div { left: 0; right: 0; padding: 1rem }
+							[part=tab] + div *:first-child { margin-top: 0 }
+							[part=tab] + div *:last-child { margin-bottom: 0 }
+							slot[name*=tab]::slotted(*) { font: inherit; margin: 0; }
 						</style>
-						${this.innerHTML}
 					`
+
+					const tab_css = `
+						<style>
+							:host { padding-top: var(--padding-top) }
+							details:not(:last-of-type) { border-bottom: 0 }
+							details:not(:last-of-type) summary {
+								border-right: 1px solid currentcolor;
+							}
+							summary { border-bottom: 1px solid currentcolor }
+							[part=indicator] {
+								background: currentcolor;
+								height: 2px;
+								position: absolute;
+								top: calc(var(--padding-top) - 2px);
+								transition: 0.33s;
+							}
+						<style>
+					`
+
+					const indicator = `<div part="indicator"></div>`
+
+					const tab_stuff = this.type === 'tabs' ? indicator + tab_css : ''
+
+					this.sr.innerHTML = css + template + tab_stuff
 				}
 
 				connectedCallback() {
-					this.sr.innerHTML = this.template
-
-					this.sr.querySelectorAll('summary').forEach((s) => {
-						s.setAttribute('part', 'tab')
-					})
-
-					this.sr.querySelectorAll('summary + *').forEach((s) => {
-						s.setAttribute('part', 'panel')
-					})
-
 					if (this.type === 'tabs') {
-						this.sr.innerHTML += `
-							<style>
-								:host { padding-top: var(--padding-top) }
-								details:not(:last-of-type) { border-bottom: 0 }
-								details:not(:last-of-type) summary {
-									border-right: 1px solid currentcolor;
-								}
-								summary { border-bottom: 1px solid currentcolor }
-								[part=indicator] {
-									background: white;
-									height: 2px;
-									position: absolute;
-									top: calc(var(--padding-top) - 2px);
-									transition: 0.33s;
-								}
-							</style>
-							<div part="indicator"></div>
-						`
-
-						const tabCount = this.children.length
+						const tabCount = this.tabs.length
 						const indicator = this.sr.querySelector('[part=indicator]')
 						const details = this.sr.querySelectorAll('details')
 
 						details.forEach((d, i) => {
-							const tab = d.querySelector('summary')
-							const panel = d.querySelector('summary + *')
-							const rm = matchMedia('prefers-reduced-motion').matches
+							const tab = d.querySelector('[part=tab]')
+							const panel = d.querySelector('[part=panel]')
 
 							this.setAttribute('style', '--padding-top: ' + tab.clientHeight + 'px')
 							tab.style.position = 'absolute'
@@ -105,7 +128,7 @@ export default (() => {
 
 							tab.addEventListener('click', () => {
 								indicator.style.left = tab.style.left
-								if (!rm && i !== this.open) {
+								if (!this.rm && i !== this.open) {
 									const direction = `translateX(${i < this.open ? '-' : ''}100%)`
 									panel.animate(
 										[
