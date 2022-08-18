@@ -1,5 +1,5 @@
 # Composer
-Composer was inspired by the Vue 2 Single File Components and the Options API. It is a tiny function that provides a comfortable scaffold to create new custom elements.
+Composer is a tiny function that provides a comfortable scaffold to create new custom elements. It was inspired by Vue 2 Single File Components and the Options API.
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
 ## Installation
