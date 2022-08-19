@@ -10,12 +10,14 @@ export default (() => {
 					this.rm = matchMedia('prefers-reduced-motion').matches
 
 					const bp = this.getAttribute('breakpoint')
+					const mq = matchMedia(`(min-width: ${bp})`)
+
 					const setType = () => {
 						this.type = mq.matches ? 'tabs' : 'accordion'
 						this.setAttribute('type', this.type)
 					}
+
 					if (bp) {
-						const mq = matchMedia(`(min-width: ${bp})`)
 						setType()
 						mq.addEventListener('change', () => {
 							setType()
