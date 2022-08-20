@@ -10,9 +10,8 @@ export default (c) => {
 			if (this.props) {
 				Object.keys(this.props()).forEach((prop) => {
 					const handler = this.props()[prop]
-					const val = this.getAttribute(prop)
 					if (typeof handler === 'function') {
-						this[prop] = val ? handler(this.getAttribute(prop)) : val
+						this[prop] = handler(this.getAttribute(prop))
 					} else {
 						console.error(
 							`Handler for prop ${prop} in component ${this.component} is not a function.`
