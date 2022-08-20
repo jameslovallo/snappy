@@ -94,9 +94,9 @@ export default (() => {
 						}
 						[part=indicator] {
 							background: var(--indicator-color, currentcolor);
-							height: var(--indicator-width: 2px);
+							height: var(--indicator-width, 2px);
 							position: absolute;
-							top: calc(var(--padding-top) - var(--indicator-width: 2px));
+							top: calc(var(--padding-top) - var(--indicator-width, 2px));
 							transition: 0.33s;
 						}
 					`
