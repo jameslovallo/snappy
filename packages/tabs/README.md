@@ -94,3 +94,12 @@ snappy-tabs::part(indicator) {
   background: darkslateblue;
 }
 ```
+
+### CSS Variables
+
+The following variables are available for styles
+
+- --border-color
+- --border-width
+- --indicator-color
+- --indicator-width

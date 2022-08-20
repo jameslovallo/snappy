@@ -58,18 +58,18 @@ export default (() => {
 
 					const css = /* css */ `
 						:host {
-							border: 1px solid currentcolor;
+							border: var(--border-width, 1px) solid var(--border-color, currentcolor);
 							border-radius: 4px;
 							display: block;
 							overflow: hidden;
 							position: relative;
 						}
 						details[open] [part=tab] {
-							border-bottom: 1px solid currentcolor;
+							border-bottom: var(--border-width, 1px) solid var(--border-color, currentcolor);
 							font-weight: bold;
 						}
 						details:not(:last-of-type) {
-							border-bottom: 1px solid currentcolor
+							border-bottom: var(--border-width, 1px) solid var(--border-color, currentcolor)
 						}
 						[part=tab] {
 							cursor: pointer;
@@ -87,19 +87,21 @@ export default (() => {
 						:host { padding-top: var(--padding-top) }
 						details:not(:last-of-type) { border-bottom: 0 }
 						details:not(:last-of-type) summary {
-							border-right: 1px solid currentcolor;
+							border-right: var(--border-width, 1px) solid var(--border-color, currentcolor);
 						}
-						summary { border-bottom: 1px solid currentcolor }
+						summary {
+							border-bottom: var(--border-width, 1px) solid var(--border-color, currentcolor);
+						}
 						[part=indicator] {
-							background: currentcolor;
-							height: 2px;
+							background: var(--indicator-color, currentcolor);
+							height: var(--indicator-width: 2px);
 							position: absolute;
-							top: calc(var(--padding-top) - 2px);
+							top: calc(var(--padding-top) - var(--indicator-width: 2px));
 							transition: 0.33s;
 						}
 					`
 
-					const indicator = `<div part="indicator"></div>`
+					const indicator = /* html */ `<div part="indicator"></div>`
 
 					this.template = `<style>${css}</style>` + html
 					this.tab_stuff = this.type === 'tabs' ? indicator + `<style>${tab_css}</style>` : ''
