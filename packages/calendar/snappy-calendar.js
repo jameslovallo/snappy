@@ -8,12 +8,87 @@ export default (() => {
 					super()
 					this.attachShadow({ mode: 'open' })
 
-					const prevAria =
-						this.getAttribute('prev-aria-label') || 'Show Previous Month'
-					const nextAria =
-						this.getAttribute('next-aria-label') || 'Show Next Month'
+					const prevAria = this.getAttribute('prev-aria-label') || 'Show Previous Month'
+					const nextAria = this.getAttribute('next-aria-label') || 'Show Next Month'
 
-					this.shadowRoot.innerHTML = `<style>:host {display: block;}:host * {box-sizing: border-box;}[part=header] {display: flex;align-items: center;justify-content: space-between;margin-bottom: 1rem;}[part=prev],[part=next] {background: none;border: none;cursor: pointer;padding: 0;height: 3rem;width: 3rem;display: flex;align-items: center;justify-content: center;}[part=prev] svg,[part=next] svg{fill: currentcolor;display: block;}:host([format=list]) [part=grid] [part=day] {margin-bottom: 1.5rem;}:host([format=list]) [part=grid] [part=day]:before {content: attr(data-label)}:host([format=list]) [part=grid] [part=day]:empty {display: none;}:host([format=grid]) [part=grid] {display: grid;grid-template-columns: repeat(7, 1fr);gap: .25rem;}:host([format=grid]) [part=grid] [part=day] {padding: 0.25rem;min-height: 5rem;}:host([format=grid]) [part=grid] [part=day]:before {content: attr(data-numeral);}[part=event] {margin: 0.75em 0;}[part=event-name] {display: block;font-size: .9rem;text-decoration: none;}[part=event-time] {font-size: .75rem;opacity: 0.75;}</style><div part="header"><button part="prev" aria-label="${prevAria}"><slot name="prev"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg></slot></button><div part="date"></div><button part="next" aria-label="${nextAria}"><slot name="next"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg></slot></button></div><div part="grid"></div>`
+					this.shadowRoot.innerHTML = /* html */ `
+						<style>
+							:host { display: block }
+							:host * { box-sizing: border-box }
+							[part='header'] {
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								margin-bottom: 1rem;
+							}
+							[part='prev'],
+							[part='next'] {
+								background: none;
+								border: none;
+								cursor: pointer;
+								padding: 0;
+								height: 3rem;
+								width: 3rem;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+							}
+							[part='prev'] svg,
+							[part='next'] svg {
+								fill: currentcolor;
+								display: block;
+							}
+							:host([format='list']) [part='grid'] [part='day'] {
+								margin-bottom: 1.5rem;
+							}
+							:host([format='list']) [part='grid'] [part='day']:before {
+								content: attr(data-label);
+							}
+							:host([format='list']) [part='grid'] [part='day']:empty {
+								display: none;
+							}
+							:host([format='grid']) [part='grid'] {
+								display: grid;
+								grid-template-columns: repeat(7, 1fr);
+								gap: 0.25rem;
+							}
+							:host([format='grid']) [part='grid'] [part='day'] {
+								padding: 0.25rem;
+								min-height: 5rem;
+							}
+							:host([format='grid']) [part='grid'] [part='day']:before {
+								content: attr(data-numeral);
+							}
+							[part='event'] { margin: 0.75em 0 }
+							[part='event-name'] {
+								display: block;
+								font-size: 0.9rem;
+								text-decoration: none;
+							}
+							[part='event-time'] {
+								font-size: 0.75rem;
+								opacity: 0.75;
+							}
+						</style>
+						<div part="header">
+							<button part="prev" aria-label="${prevAria}">
+								<slot name="prev">
+									<svg width="24" height="24" viewBox="0 0 24 24">
+										<path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+									</svg>
+								</slot>
+							</button>
+							<div part="date"></div>
+							<button part="next" aria-label="${nextAria}">
+								<slot name="next">
+									<svg width="24" height="24" viewBox="0 0 24 24">
+										<path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+									</svg>
+								</slot>
+							</button>
+						</div>
+						<div part="grid"></div>
+					`
 
 					const cal = this.shadowRoot
 					const prev = cal.querySelector('[part=prev]')
@@ -65,14 +140,11 @@ export default (() => {
 						day.part = 'day'
 						day.dataset.numeral = i
 
-						day.dataset.label = new Date(year, month, i).toLocaleDateString(
-							this.locale,
-							{
-								weekday: 'long',
-								month: 'long',
-								day: 'numeric',
-							}
-						)
+						day.dataset.label = new Date(year, month, i).toLocaleDateString(this.locale, {
+							weekday: 'long',
+							month: 'long',
+							day: 'numeric',
+						})
 
 						this.grid.appendChild(day)
 
@@ -97,11 +169,18 @@ export default (() => {
 						const startDate = start.getDate()
 						const startTime = localTime(start)
 						const endTime = localTime(new Date(item.end.dateTime))
-						const day = this.grid.querySelector(
-							`[part=day]:nth-child(${startDate})`
-						)
+						const day = this.grid.querySelector(`[part=day]:nth-child(${startDate})`)
 
-						day.innerHTML += `<div part="event"><a part="event-name" href="${item.htmlLink}" target="_blank">${item.summary}</a><span part="event-time">${startTime} - ${endTime}</span></div>`
+						day.innerHTML += /* html */ `
+							<div part="event">
+								<a part="event-name" href="${item.htmlLink}" target="_blank">
+									${item.summary}
+								</a>
+								<span part="event-time">
+									${startTime} - ${endTime}
+								</span>
+							</div>
+						`
 					})
 				}
 
@@ -126,8 +205,7 @@ export default (() => {
 				}
 
 				connectedCallback() {
-					this.locale =
-						this.getAttribute('locale') || navigator.language || undefined
+					this.locale = this.getAttribute('locale') || navigator.language || undefined
 
 					if (!this.hasAttribute('format')) {
 						const mq = matchMedia('(min-width: 1024px)')

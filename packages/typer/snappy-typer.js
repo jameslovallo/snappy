@@ -14,29 +14,26 @@ export default (() => {
 					this.wordDelay = Number(this.getAttribute('word-delay')) || 5000
 					this.nextDelay = Number(this.getAttribute('next-delay')) || 0
 					// setup template
-					this.sr.innerHTML = `
-					<span part="static">${this.static || ''}</span>
-					<span part="typed" class="typing"></span>
-					
-					<style>
-						:host { display: block }
+					this.sr.innerHTML = /* html */ `
+						<span part="static">${this.static || ''}</span>
+						<span part="typed" class="typing"></span>
 						
-						[part="typed"]:after {
-							content: var(--caret, '|');
-							color: var(--caret-color, currentcolor);
-							font-weight: 100;
-						}
-						
-						[part="typed"]:not([data-typing="true"]):after {
-							animation: blink 1s infinite
-						}
-						
-						@keyframes blink {
-							0% { opacity: 1 } 50% { opacity: 1 }
-							51% { opacity: 0 } 100% { opacity: 0 }
-						}
-					</style>
-				`
+						<style>
+							:host { display: block }
+							[part="typed"]:after {
+								content: var(--caret, '|');
+								color: var(--caret-color, currentcolor);
+								font-weight: 100;
+							}
+							[part="typed"]:not([data-typing="true"]):after {
+								animation: blink 1s infinite
+							}
+							@keyframes blink {
+								0% { opacity: 1 } 50% { opacity: 1 }
+								51% { opacity: 0 } 100% { opacity: 0 }
+							}
+						</style>
+					`
 					this.typedEl = this.sr.querySelector('[part=typed]')
 				}
 

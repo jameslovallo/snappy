@@ -43,7 +43,7 @@ export default (() => {
 
 					const html = [...this.tabs]
 						.map((child, i) => {
-							return `
+							return /* html */ `
 								<details ${open(i)}>
 									<summary part="tab">
 										<slot name="tab-${i}"></slot>
@@ -56,57 +56,53 @@ export default (() => {
 						})
 						.join('')
 
-					const css = `
-						<style>
-							:host {
-								border: 1px solid currentcolor;
-								border-radius: 4px;
-								display: block;
-								overflow: hidden;
-								position: relative;
-							}
-							details[open] [part=tab] {
-								border-bottom: 1px solid currentcolor;
-								font-weight: bold;
-							}
-							details:not(:last-of-type) {
-								border-bottom: 1px solid currentcolor
-							}
-							[part=tab] {
-								cursor: pointer;
-								box-sizing: border-box;
-								display: block;
-								padding: 1rem;
-							}
-							[part=tab] + div { left: 0; right: 0; padding: 1rem }
-							[part=tab] + div *:first-child { margin-top: 0 }
-							[part=tab] + div *:last-child { margin-bottom: 0 }
-							slot[name*=tab]::slotted(*) { font: inherit; margin: 0; }
-						</style>
+					const css = /* css */ `
+						:host {
+							border: 1px solid currentcolor;
+							border-radius: 4px;
+							display: block;
+							overflow: hidden;
+							position: relative;
+						}
+						details[open] [part=tab] {
+							border-bottom: 1px solid currentcolor;
+							font-weight: bold;
+						}
+						details:not(:last-of-type) {
+							border-bottom: 1px solid currentcolor
+						}
+						[part=tab] {
+							cursor: pointer;
+							box-sizing: border-box;
+							display: block;
+							padding: 1rem;
+						}
+						[part=tab] + div { left: 0; right: 0; padding: 1rem }
+						[part=tab] + div *:first-child { margin-top: 0 }
+						[part=tab] + div *:last-child { margin-bottom: 0 }
+						slot[name*=tab]::slotted(*) { font: inherit; margin: 0; }
 					`
 
-					const tab_css = `
-						<style>
-							:host { padding-top: var(--padding-top) }
-							details:not(:last-of-type) { border-bottom: 0 }
-							details:not(:last-of-type) summary {
-								border-right: 1px solid currentcolor;
-							}
-							summary { border-bottom: 1px solid currentcolor }
-							[part=indicator] {
-								background: currentcolor;
-								height: 2px;
-								position: absolute;
-								top: calc(var(--padding-top) - 2px);
-								transition: 0.33s;
-							}
-						<style>
+					const tab_css = /* css */ `
+						:host { padding-top: var(--padding-top) }
+						details:not(:last-of-type) { border-bottom: 0 }
+						details:not(:last-of-type) summary {
+							border-right: 1px solid currentcolor;
+						}
+						summary { border-bottom: 1px solid currentcolor }
+						[part=indicator] {
+							background: currentcolor;
+							height: 2px;
+							position: absolute;
+							top: calc(var(--padding-top) - 2px);
+							transition: 0.33s;
+						}
 					`
 
 					const indicator = `<div part="indicator"></div>`
 
-					this.template = css + html
-					this.tab_stuff = this.type === 'tabs' ? indicator + tab_css : ''
+					this.template = `<style>${css}</style>` + html
+					this.tab_stuff = this.type === 'tabs' ? indicator + `<style>${tab_css}</style>` : ''
 				}
 
 				connectedCallback() {

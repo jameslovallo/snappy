@@ -30,7 +30,7 @@ export default (() => {
 						}
 					}
 		
-					this.sr.innerHTML = `
+					this.sr.innerHTML = /* html */ `
 						<style>
 							:host, [part=wrapper] { display: flex; align-items: center; }
 							:host { justify-content: space-between }
