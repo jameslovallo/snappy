@@ -1,5 +1,5 @@
 # Composer
-Composer is a tiny function that provides a comfortable scaffold to create new custom elements. It was inspired by Vue 2 Single File Components and the Options API.
+Composer is a small (1kb) function that makes it easier to create vanilla custom elements. It was inspired by Vue Single File Components and the Options API.
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
 ## Installation
@@ -18,25 +18,22 @@ Option 2: In your markup.
 </script>
 ```
 ## Usage
-Just create an object with the keys below and pass it into composer as the only parameter, i.e. `composer(myObject)`.
+Import Composer, then provide with an object with any or all of the following keys. You can also add any other functions or values to your object and access it by it's name using `this`. Composer also provides several special keys, including `DOM`, `parts`, and a `render` function, which will be explained in greater detail below.
 
-| Key       | String   | Example                                            |
-| --------- | -------- | -------------------------------------------------- |
-| component | String   | 'staff-card'                                       |
-| shadow    | Boolean  | true                                               |
-| props     | Function | return { name: String }                            |
-| ready     | Function | this.parts.name.on('click', this.phoneClick)       |
-| template  | Function | return \``<span part="name">${this.name}</span>`\` |
-| styles    | Function | return \``[part=name] { font-weight: bold; }`\`    |
-
-> You can also add anything else to your object and access it by it's key name using `this`.
+| Key       | Type     |
+| --------- | -------- |
+| component | String   |
+| shadow    | Boolean  |
+| props     | Function |
+| template  | Function |
+| styles    | Function |
+| ready     | Function |
 
 ## Example
-Below is an example using each of the keys in a `composer` object. You can see the complete demo code [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
-> You will notice that other functions are referenced, i.e. `this.phoneLink` or `this.phoneClick`. You can add as many functions as you want to your composer object and use them as prop handlers, in your template, in your CSS, or in event listeners.
+Below is an example using each of the keys in a `composer` object to create a "Staff Card" component. There are multiple demo components [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
 
 ### component
-The name of your new component. Must follow custom element naming convention.
+Give your new component a name. It must follow custom element naming convention.
 ```js
 composer({
   component: 'staff-card',
@@ -44,17 +41,20 @@ composer({
 ```
 
 ### shadow
-Whether or not to use the Shadow DOM, which allows you to use slots in your template.
+Enable or disable the Shadow DOM, which allows you to use slots in your template.
 ```js
 composer({
+  component: 'staff-card',
   shadow: true, // defaults to false
 })
 ```
 
-### props
-Get prop data from attributes and assign it using a handler function.
+### props()
+Use this function to get prop data from component attributes and assign it to `this` using a handler function. Handler functions can be built in functions like `String`, `Number`, or `JSON.parse`, an arrow function, or another function in your object, i.e. `this.phoneLink` in the example below.
 ```js
 composer({
+  component: 'staff-card',
+  // ...
   props() {
     return {
       name: String,
@@ -67,33 +67,30 @@ composer({
 })
 ```
 
-### ready
-Code to run after the template is created, i.e. assigning event listeners.
-> Note the `on` shorthand function to create listeners for any `part` in the template. When you use the `on` function, the `e` event object is forwarded for your function to use, i.e to `preventDefault()`.
+### template()
+Use this function to return the markup for you component as a template literal. You can handle any logic or data transformations before the return, in prop handlers, or using another method from your component's object.
+#### slots
+If you enabled Shadow DOM, you can use slots inside your template. You can use default slots or multiple named slots.
+#### parts
+If you're new to custom elements, part attributes allow you to expose an element for custom styling by CSS rules outside of the component's Shadow DOM. Composer also uses part attributes like refs, and any element with a `part` attribute will be added to `this.parts`, i.e. `this.parts.photo`.
+#### handling events
+You can add event handlers to an element using the  `on` attribute in your template, using the format `on="event_name:event_handler"`, where `event_name` is any valid event type and `event_handler` is the key of any function added to your component's object. When you assign events this way, the `e` event object is forwarded for your function to use, i.e to `preventDefault()`. See the document for the `ready()` function below for more
 
 ```js
 composer({
-  ready() {
-    this.parts.phone.on('click', this.phoneClick)
-  },
-})
-```
-
-### template
-Return a template literal to define the template for your component.
-> All `part` attributes are queried and available under `this.parts`. You can use `slot` elements if you chose `shadow: true`.
-
-```js
-composer({
+  component: 'staff-card',
+  // ...
   template() {
     return `
       <img part="photo" src="${this.photo}">
+
       <div part="details">
         <b>${this.name}</b>
         ${this.role}
       </div>
+
       <div part="contact">
-        <span part="phone">${this.phone}</span>
+        <span part="phone" on="click:phoneClick">${this.phone}</span>
         <span part="email">${this.email}</span>
       </div>
     `
@@ -101,21 +98,24 @@ composer({
 })
 ```
 
-### styles
-Return a template literal containing your component's styles.
+### styles()
+Return a template literal containing your component's styles. Like the `template()` function, you can handle any logic or data transformations before the return, in prop handlers, or using another method from your component's object. This gives you a lot of flexibility to use data in your component's css, i.e. by using a JS variable or function in `${}` to return a property value, a property/value pair, or even a whole rule or set of rules.
 ```js
 composer({
+  component: 'staff-card',
+  // ...
   styles() {
     return `
       :host {
         display: grid;
         align-items: center;
         grid-template-columns: 64px 1fr auto;
-        max-width:400px;
+        max-width: 400px;
         box-shadow: inset 0 0 0 1px rgba(123, 123, 123, 0.5);
         border-radius: .75rem;
         overflow: hidden;
       }
+
       [part=photo] {
         display: block;
         height: 64px;
@@ -124,25 +124,29 @@ composer({
         object-fit: contain;
         object-position: center bottom;
       }
-      [part=details] {
-        display: flex;
-        flex-direction: column;
-        padding: .75rem;
-      }
-      [part=contact] {
-        display: flex;
-        gap: .75rem;
-        padding: .75rem;
-      }
-      [part="contact"] a {
-        display: block;
-        text-decoration: none;
-      }
-      [part=contact] svg {
-        display: block;
-        width: 24px;
-      }
+      ...
     `
   },
 })
 ```
+
+### ready()
+Use this function to handle events, effects, etc after the template is created. You can easily assign events to any `part` in the template using that part's `on` method, as seen in the example below. The `e` event object is forwarded for your function to use, i.e to `preventDefault()`.
+
+```js
+composer({
+  component: 'staff-card',
+  // ...
+  ready() {
+    this.parts.phone.on('click', this.phoneClick)
+  },
+})
+```
+
+## Reserved Keys
+### DOM
+`this.DOM` will always reference the component's render target, whether that is the Shadow Root or the component's `innerHTML`. 
+### parts
+`this.parts` is used to conveniently reference elements in the component's markup and assign event listeners or handle effects. As mentioned previously, `this.parts` is an object containing every element that has a part attribute. Each element is referenced by that attribute's value, i.e. `this.parts.image`, and has a special `on()` function that can be used to assign event listeners to that element. See the `template()` section above for examples.
+### render()
+If you prefer declarative rendering, you can manually call `this.render()` to re-render the component's template with any updated prop values. However, in most cases effects can be handled by imperatively manipulating elements through `this.parts`, which is the most efficient way to reflect state changes in your component's markup.
