@@ -2,98 +2,38 @@
 	import composer from './packages/composer/composer.js'
 
 	composer({
-		component: 'composer-props',
+		component: 'counter-demo',
 		shadow: true,
-
-		props() {
-			return {
-				string: String,
-				number: Number,
-				true: JSON.parse,
-				false: JSON.parse,
-				object: JSON.parse,
-				array: JSON.parse,
-			}
-		},
-
-		ready() {
-			console.log(
-				this.string,
-				this.number,
-				this.true,
-				this.false,
-				this.object,
-				this.array
-			)
-		},
-
+		props: () => ({
+			count: Number,
+			step: (v) => (v ? Number(v) : 1),
+		}),
 		template() {
-			return `
-				<div>${this.string}</div>
-				<div>${this.number}</div>
-				<div>${this.true}</div>
-				<div>${this.false}</div>
-				<div>${this.object}</div>
-				<div>${this.array}</div>
+			return /* html */ `
+				<button part="sub">-</button>
+				<span part="count">${this.count}</span>
+				<button part="add">+</button>
 			`
 		},
-
 		styles() {
-			return `
-				:host {
-					display: grid;
-					align-items: center;
-					grid-template-columns: 64px 1fr auto;
-					max-width:400px;
-					box-shadow: inset 0 0 0 1px rgba(123, 123, 123, 0.5);
-					border-radius: .75rem;
-					overflow: hidden;
-				}
-				[part=photo] {
-					display: block;
-					height: 64px;
-					width: 64px;
-					aspect-ratio: 1/1;
-					object-fit: contain;
-					object-position: center bottom;
-				}
-				[part=details] {
-					display: flex;
-					flex-direction: column;
-					padding: .75rem;
-				}
-				[part=contact] {
-					display: flex;
-					gap: .75rem;
-					padding: .75rem;
-				}
-				[part="contact"] a {
-					display: block;
-					text-decoration: none;
-				}
-				[part=contact] svg {
-					display: block;
-					width: 24px;
-				}
+			return /* css */ `
+				button { cursor: pointer; user-select: none }
+				[part=count] { display: inline-block; min-width: 2em; text-align: center }
 			`
+		},
+		sub() {
+			this.count -= this.step
+			this.parts.count.innerHTML = this.count
+		},
+		add() {
+			this.count += this.step
+			this.parts.count.innerHTML = this.count
+		},
+		ready() {
+			this.parts.sub.on('click', this.sub)
+			this.parts.add.on('click', this.add)
 		},
 	})
 </script>
 
-<style>
-	:root {
-		font-family: sans-serif;
-	}
-</style>
-
-<composer-props
-	string="String"
-	number="22"
-	true="true"
-	false="false"
-	object="{&quot;_uid&quot;:&quot;a0bc4e5b-03a0-4572-b317-46192b933a9a&quot;,&quot;large&quot;:&quot;&quot;,&quot;small&quot;:&quot;&quot;,&quot;medium&quot;:&quot;8&quot;,&quot;plugin&quot;:&quot;example_plugin&quot;,&quot;xlarge&quot;:&quot;&quot;,&quot;xsmall&quot;:&quot;12&quot;}"
-	array="[&quot;string&quot;, 0, true, false]"
->
-</composer-props>
-
-<composer-props></composer-props>
+<counter-demo step="1"></counter-demo>
