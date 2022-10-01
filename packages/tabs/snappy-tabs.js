@@ -104,7 +104,8 @@ export default (() => {
 					const indicator = /* html */ `<div part="indicator"></div>`
 
 					this.template = `<style>${css}</style>` + html
-					this.tab_stuff = this.type === 'tabs' ? indicator + `<style>${tab_css}</style>` : ''
+					this.tab_stuff =
+						this.type === 'tabs' ? indicator + `<style>${tab_css}</style>` : ''
 				}
 
 				connectedCallback() {
@@ -120,7 +121,7 @@ export default (() => {
 							const tab = d.querySelector('[part=tab]')
 							const panel = d.querySelector('[part=panel]')
 
-							this.setAttribute('style', '--padding-top: ' + tab.clientHeight + 'px')
+							this.style.setProperty('--padding-top', tab.clientHeight + 'px')
 							tab.style.position = 'absolute'
 							tab.style.top = 0
 							tab.style.width = 100 / tabCount + '%'
@@ -135,7 +136,9 @@ export default (() => {
 							tab.addEventListener('click', () => {
 								indicator.style.left = tab.style.left
 								if (!this.rm && i !== this.open) {
-									const direction = `translateX(${i < this.open ? '-' : ''}100%)`
+									const direction = `translateX(${
+										i < this.open ? '-' : ''
+									}100%)`
 									panel.animate(
 										[
 											{ opacity: 0, transform: direction },
